@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище zozoDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointments">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+          </Key>
+          <Property Name="IdAppointment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="IdParrentAppointments" Type="int" />
+          <Property Name="ReferralText" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdPatient" Type="int" Nullable="false" />
+          <Property Name="IdDoctor" Type="int" Nullable="false" />
+          <Property Name="Diagnosis" Type="nvarchar" MaxLength="100" />
+          <Property Name="DevelopmentRealDisease" Type="nvarchar" MaxLength="100" />
+          <Property Name="ObjectiveResearchData" Type="nvarchar" MaxLength="100" />
+          <Property Name="Bite" Type="nvarchar" MaxLength="100" />
+          <Property Name="ConditionCavity" Type="nvarchar" MaxLength="100" />
+          <Property Name="DataXrayStudies" Type="nvarchar" MaxLength="200" />
+          <Property Name="Treatment" Type="nvarchar" MaxLength="200" />
+          <Property Name="TreatmentResults" Type="nvarchar" MaxLength="200" />
+          <Property Name="Instructions" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdheadsDepartment" Type="int" />
+        </EntityType>
+        <EntityType Name="Complaints">
+          <Key>
+            <PropertyRef Name="IdComplaint" />
+          </Key>
+          <Property Name="IdComplaint" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAppointment" Type="int" Nullable="false" />
+          <Property Name="DescriptionComplaint" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diseases">
+          <Key>
+            <PropertyRef Name="IdDisease" />
+          </Key>
+          <Property Name="IdDisease" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescriptionDisease" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OralCavity">
+          <Key>
+            <PropertyRef Name="IdOralCavity" />
+          </Key>
+          <Property Name="IdOralCavity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppointmentsId" Type="int" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Hygiene" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DentalDystopia" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GingivalRecession" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GMA" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specialistes">
+          <Key>
+            <PropertyRef Name="Idspecialist" />
+          </Key>
+          <Property Name="Idspecialist" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Patronimyc" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Sex" Type="int" Nullable="false" />
+          <Property Name="Geolocation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telephon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Profession" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_appointments_headsDepartment">
+          <End Role="Specialistes" Type="Self.Specialistes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialistes">
+              <PropertyRef Name="Idspecialist" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="IdheadsDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_appointments_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="IdPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_complaints_appointments">
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointments">
+              <PropertyRef Name="IdAppointment" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="IdAppointment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_diseases_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Diseases" Type="Self.Diseases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Diseases">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_oralCavity_appointments">
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="1" />
+          <End Role="OralCavity" Type="Self.OralCavity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointments">
+              <PropertyRef Name="IdAppointment" />
+            </Principal>
+            <Dependent Role="OralCavity">
+              <PropertyRef Name="AppointmentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище zozoDBModelContainer">
+          <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Complaints" EntityType="Self.Complaints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diseases" EntityType="Self.Diseases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OralCavity" EntityType="Self.OralCavity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialistes" EntityType="Self.Specialistes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_appointments_headsDepartment" Association="Self.FK_appointments_headsDepartment">
+            <End Role="Specialistes" EntitySet="Specialistes" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_appointments_Users" Association="Self.FK_appointments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_complaints_appointments" Association="Self.FK_complaints_appointments">
+            <End Role="Appointments" EntitySet="Appointments" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_diseases_Users" Association="Self.FK_diseases_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Diseases" EntitySet="Diseases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_oralCavity_appointments" Association="Self.FK_oralCavity_appointments">
+            <End Role="Appointments" EntitySet="Appointments" />
+            <End Role="OralCavity" EntitySet="OralCavity" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="zozoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appointments">
+          <Key>
+            <PropertyRef Name="IdAppointment" />
+          </Key>
+          <Property Name="IdAppointment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdParrentAppointments" Type="Int32" />
+          <Property Name="ReferralText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdPatient" Type="Int32" Nullable="false" />
+          <Property Name="IdDoctor" Type="Int32" Nullable="false" />
+          <Property Name="Diagnosis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DevelopmentRealDisease" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ObjectiveResearchData" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Bite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ConditionCavity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DataXrayStudies" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Treatment" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TreatmentResults" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Instructions" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IdheadsDepartment" Type="Int32" />
+          <NavigationProperty Name="Specialistes" Relationship="Self.FK_appointments_headsDepartment" FromRole="Appointments" ToRole="Specialistes" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_appointments_Users" FromRole="Appointments" ToRole="Users" />
+          <NavigationProperty Name="Complaints" Relationship="Self.FK_complaints_appointments" FromRole="Appointments" ToRole="Complaints" />
+          <NavigationProperty Name="OralCavity" Relationship="Self.FK_oralCavity_appointments" FromRole="Appointments" ToRole="OralCavity" />
+        </EntityType>
+        <EntityType Name="Complaints">
+          <Key>
+            <PropertyRef Name="IdComplaint" />
+          </Key>
+          <Property Name="IdComplaint" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAppointment" Type="Int32" Nullable="false" />
+          <Property Name="DescriptionComplaint" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_complaints_appointments" FromRole="Complaints" ToRole="Appointments" />
+        </EntityType>
+        <EntityType Name="Diseases">
+          <Key>
+            <PropertyRef Name="IdDisease" />
+          </Key>
+          <Property Name="IdDisease" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionDisease" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_diseases_Users" FromRole="Diseases" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="OralCavity">
+          <Key>
+            <PropertyRef Name="IdOralCavity" />
+          </Key>
+          <Property Name="IdOralCavity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentsId" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Hygiene" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DentalDystopia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GingivalRecession" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GMA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_oralCavity_appointments" FromRole="OralCavity" ToRole="Appointments" />
+        </EntityType>
+        <EntityType Name="Specialistes">
+          <Key>
+            <PropertyRef Name="Idspecialist" />
+          </Key>
+          <Property Name="Idspecialist" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronimyc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_appointments_headsDepartment" FromRole="Specialistes" ToRole="Appointments" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sex" Type="Int32" Nullable="false" />
+          <Property Name="Geolocation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telephon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Profession" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK_appointments_Users" FromRole="Users" ToRole="Appointments" />
+          <NavigationProperty Name="Diseases" Relationship="Self.FK_diseases_Users" FromRole="Users" ToRole="Diseases" />
+        </EntityType>
+        <Association Name="FK_appointments_headsDepartment">
+          <End Role="Specialistes" Type="Self.Specialistes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialistes">
+              <PropertyRef Name="Idspecialist" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="IdheadsDepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_appointments_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Appointments">
+              <PropertyRef Name="IdPatient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_complaints_appointments">
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Complaints" Type="Self.Complaints" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointments">
+              <PropertyRef Name="IdAppointment" />
+            </Principal>
+            <Dependent Role="Complaints">
+              <PropertyRef Name="IdAppointment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_oralCavity_appointments">
+          <End Role="Appointments" Type="Self.Appointments" Multiplicity="1" />
+          <End Role="OralCavity" Type="Self.OralCavity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointments">
+              <PropertyRef Name="IdAppointment" />
+            </Principal>
+            <Dependent Role="OralCavity">
+              <PropertyRef Name="AppointmentsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_diseases_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Diseases" Type="Self.Diseases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="Diseases">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="zozoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="Self.Appointments" />
+          <EntitySet Name="Complaints" EntityType="Self.Complaints" />
+          <EntitySet Name="Diseases" EntityType="Self.Diseases" />
+          <EntitySet Name="OralCavity" EntityType="Self.OralCavity" />
+          <EntitySet Name="Specialistes" EntityType="Self.Specialistes" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_appointments_headsDepartment" Association="Self.FK_appointments_headsDepartment">
+            <End Role="Specialistes" EntitySet="Specialistes" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_appointments_Users" Association="Self.FK_appointments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Appointments" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_complaints_appointments" Association="Self.FK_complaints_appointments">
+            <End Role="Appointments" EntitySet="Appointments" />
+            <End Role="Complaints" EntitySet="Complaints" />
+          </AssociationSet>
+          <AssociationSet Name="FK_oralCavity_appointments" Association="Self.FK_oralCavity_appointments">
+            <End Role="Appointments" EntitySet="Appointments" />
+            <End Role="OralCavity" EntitySet="OralCavity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_diseases_Users" Association="Self.FK_diseases_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Diseases" EntitySet="Diseases" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище zozoDBModelContainer" CdmEntityContainer="zozoDBEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="zozoDBModel.Appointments">
+              <MappingFragment StoreEntitySet="Appointments">
+                <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdParrentAppointments" ColumnName="IdParrentAppointments" />
+                <ScalarProperty Name="ReferralText" ColumnName="ReferralText" />
+                <ScalarProperty Name="IdPatient" ColumnName="IdPatient" />
+                <ScalarProperty Name="IdDoctor" ColumnName="IdDoctor" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+                <ScalarProperty Name="DevelopmentRealDisease" ColumnName="DevelopmentRealDisease" />
+                <ScalarProperty Name="ObjectiveResearchData" ColumnName="ObjectiveResearchData" />
+                <ScalarProperty Name="Bite" ColumnName="Bite" />
+                <ScalarProperty Name="ConditionCavity" ColumnName="ConditionCavity" />
+                <ScalarProperty Name="DataXrayStudies" ColumnName="DataXrayStudies" />
+                <ScalarProperty Name="Treatment" ColumnName="Treatment" />
+                <ScalarProperty Name="TreatmentResults" ColumnName="TreatmentResults" />
+                <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+                <ScalarProperty Name="IdheadsDepartment" ColumnName="IdheadsDepartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Complaints">
+            <EntityTypeMapping TypeName="zozoDBModel.Complaints">
+              <MappingFragment StoreEntitySet="Complaints">
+                <ScalarProperty Name="IdComplaint" ColumnName="IdComplaint" />
+                <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
+                <ScalarProperty Name="DescriptionComplaint" ColumnName="DescriptionComplaint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diseases">
+            <EntityTypeMapping TypeName="zozoDBModel.Diseases">
+              <MappingFragment StoreEntitySet="Diseases">
+                <ScalarProperty Name="IdDisease" ColumnName="IdDisease" />
+                <ScalarProperty Name="DescriptionDisease" ColumnName="DescriptionDisease" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OralCavity">
+            <EntityTypeMapping TypeName="zozoDBModel.OralCavity">
+              <MappingFragment StoreEntitySet="OralCavity">
+                <ScalarProperty Name="IdOralCavity" ColumnName="IdOralCavity" />
+                <ScalarProperty Name="AppointmentsId" ColumnName="AppointmentsId" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Hygiene" ColumnName="Hygiene" />
+                <ScalarProperty Name="DentalDystopia" ColumnName="DentalDystopia" />
+                <ScalarProperty Name="GingivalRecession" ColumnName="GingivalRecession" />
+                <ScalarProperty Name="GMA" ColumnName="GMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialistes">
+            <EntityTypeMapping TypeName="zozoDBModel.Specialistes">
+              <MappingFragment StoreEntitySet="Specialistes">
+                <ScalarProperty Name="Idspecialist" ColumnName="Idspecialist" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Patronimyc" ColumnName="Patronimyc" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="zozoDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="zozoDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Geolocation" ColumnName="Geolocation" />
+                <ScalarProperty Name="Telephon" ColumnName="Telephon" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

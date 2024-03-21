@@ -1,0 +1,34 @@
+﻿<Page x:Class="wpf.Views.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:wpf.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid>
+        <StackPanel Style="{StaticResource MainWrapStackPanel}">
+            <TextBlock Style="{StaticResource Title}">Стоматологическая клиника Зузу</TextBlock>
+            <TextBlock>
+           Наша клиника предлагает инновационный подход к стоматологии, сочетая высокий профессионализм с уютной атмосферой и заботливым отношением к каждому пациенту.
+            </TextBlock>
+            <TextBlock >
+           У нас работают опытные стоматологи-волшебники, которые с легкостью решают любые стоматологические задачи, делая вашу улыбку ярче и здоровее!
+            </TextBlock>
+            <TextBlock>
+       Мы используем только самое современное оборудование и инновационные методики лечения, чтобы обеспечить нашим пациентам комфорт и безопасность. 
+           Приходите к нам в "Зузу" и убедитесь сами в качестве наших услуг! Ваша улыбка - наша гордость!
+            </TextBlock>
+
+            <DockPanel VerticalAlignment="Center" Margin="0 10 0 0">
+                <TextBlock HorizontalAlignment="Left" Style="{StaticResource Title}">Найти специалиста</TextBlock>
+                <Canvas HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Image Source="/Assets/img/icons/search.png" Width="12" Canvas.Left="-25" Height="15" Canvas.Top="-12" RenderTransformOrigin="-1.244,0.089"/>
+                    <TextBox Text="Поиск по фамилии" Canvas.Left="-210" Margin="0" Canvas.Top="-18"></TextBox>
+                </Canvas>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Page>
