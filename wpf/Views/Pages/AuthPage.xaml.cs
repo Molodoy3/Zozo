@@ -40,10 +40,8 @@ namespace wpf.Views.Pages
 
                 UsersController usersController = new UsersController();
 
-                string userStatus = usersController.CheckAuth(login, password);
-                if (userStatus != "")
+                if (usersController.CheckAuth(login, password))
                 {
-                    usersController.SetLocalSettings(userStatus);
                     this.NavigationService.Navigate(new MainPage());
                 }
                 //if (userStatus == "client")

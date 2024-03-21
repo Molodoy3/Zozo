@@ -10,23 +10,23 @@ namespace wpf.Controllers
 {
     internal class UsersController
     {
-        Core db = new Core();
-        public string CheckAuth(string login, string password)
+        private Core db = new Core();
+        public bool CheckAuth(string login, string password)
         {
+            bool result = false;
             string textError = "Данные введены не верно";
-            string result = "";
             if (string.IsNullOrEmpty(password))
                 throw new Exception("Вы не ввели пароль");
             if (string.IsNullOrEmpty(login))
                 throw new Exception("Вы не ввели логин");
 
-            var user = db.context.Users.FirstOrDefault(x => x.Login == login);
-            if (user != null)
+            var client = db.context.Users.FirstOrDefault(x => x.Login == login);
+            if (client != null)
             {
-                Console.WriteLine(getHash(password), user.Password);
-                if (getHash(password) == user.Password)
+                if (GetHash(password) == client.Password)
                 {
-                    result = "client";
+                    SetLocalSettings(client.idUser);
+                    result = true;
                 }
                 else
                     throw new Exception(textError);
@@ -36,36 +36,23 @@ namespace wpf.Controllers
                 var specialist = db.context.Specialistes.FirstOrDefault(x => x.Login == login);
                 if (specialist != null)
                 {
-                    if (getHash(password) == specialist.Password)
+                    if (GetHash(password) == specialist.Password)
                     {
-                        switch (specialist.Status)
-                        {
-                            case "specialist":
-                                result = "specialist";
-                                break;
-                            case "manager":
-                                result = "manager";
-                                break;
-                            case "admin":
-                                result = "admin";
-                                break;
-                            default:
-                                break;
-                        }
+                        SetLocalSettings(specialist.Idspecialist, specialist.Status);
+                        result = true;
                     }
                 } else
                    throw new Exception("f");
             }
-
             return result;
         }
-        public void SetLocalSettings(string status)
+        public void SetLocalSettings(int idUser, string statusUser = "client")
         {
-            //Properties.Settings.Default.idRole = user.IdRole;
-            //Properties.Settings.Default.idClient = user.IdUser;
-            //Properties.Settings.Default.Save();
+            Properties.Settings.Default.IdUser = idUser;
+            Properties.Settings.Default.StatusUser = statusUser;
+            Properties.Settings.Default.Save();
         }
-        private string getHash(string password)
+        private string GetHash(string password)
         {
             MD5 md5 = MD5.Create();
             byte[] b = Encoding.ASCII.GetBytes(password);
@@ -73,7 +60,7 @@ namespace wpf.Controllers
             StringBuilder stringBuilder = new StringBuilder();
             foreach (var a in hash)
                 stringBuilder.Append(a.ToString("X2"));
-            return stringBuilder.ToString();
+            return Convert.ToString(stringBuilder);
         }
     }
 }
