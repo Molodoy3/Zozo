@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using wpf.Views.Pages;
+using wpf.Views.Pages.Client;
 
 namespace wpf
 {
@@ -24,7 +25,18 @@ namespace wpf
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new AuthPage());
+            if (Properties.Settings.Default.IdUser == 0)
+                MainFrame.Navigate(new AuthPage());
+            else 
+                MainFrame.Navigate(new MainPage());
+        }
+
+        private void ClientPersonalCabinetLinkButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.IdUser != 0)
+                MainFrame.Navigate(new ClientPersonalCabinet(Properties.Settings.Default.IdUser));
+            else 
+                MessageBox.Show("Вы еще не авторизованы!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

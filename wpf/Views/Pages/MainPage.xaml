@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:wpf.Views.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="600"
       Title="MainPage">
 
     <Grid>
@@ -26,7 +26,7 @@
                 <TextBlock HorizontalAlignment="Left" Style="{StaticResource Title}">Найти специалиста</TextBlock>
                 <Canvas HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Image Source="/Assets/img/icons/search.png" Width="12" Canvas.Left="-25" Height="15" Canvas.Top="-12" RenderTransformOrigin="-1.244,0.089"/>
-                    <TextBox Text="Поиск по фамилии" Canvas.Left="-210" Margin="0" Canvas.Top="-18"></TextBox>
+                    <TextBox Text="Поиск по фамилии" Canvas.Left="-210" Canvas.Top="-18" HorizontalAlignment="Left" VerticalAlignment="Center" Width="210"/>
                 </Canvas>
             </DockPanel>
         </StackPanel>

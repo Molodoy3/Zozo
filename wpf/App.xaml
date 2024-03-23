@@ -34,7 +34,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="5" Background="{TemplateBinding Background}" Padding="30 10 30 5">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}" Padding="30 10 30 0">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -53,12 +53,12 @@
         <Style TargetType="StackPanel" x:Key="StackPanel"></Style>
         <Style TargetType="StackPanel" x:Key="StackPanelMain" BasedOn="{StaticResource StackPanel}">
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="BorderBrush" Value="{StaticResource greyBrush}"></Setter>
-            <Setter Property="Width" Value="210"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
             <Setter Property="Padding" Value="5"></Setter>
             <Setter Property="Margin" Value="0 0 0 10"></Setter>
             <Setter Property="Template">
@@ -74,7 +74,7 @@
         <Style TargetType="PasswordBox">
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="BorderBrush" Value="{StaticResource greyBrush}"></Setter>
-            <Setter Property="Width" Value="210"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
             <Setter Property="Padding" Value="5"></Setter>
             <Setter Property="Margin" Value="0 0 0 10"></Setter>
             <Setter Property="Template">
@@ -102,6 +102,10 @@
         <Style TargetType="TextBlock" x:Key="Title">
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="Margin" Value="0 0 0 20"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="TitleChild">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0 0 0 12"/>
         </Style>
     </Application.Resources>
 </Application>

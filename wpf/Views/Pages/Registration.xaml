@@ -1,0 +1,45 @@
+﻿<Page x:Class="wpf.Views.Pages.Registration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:wpf.Views.Pages"
+      mc:Ignorable="d" 
+      MinHeight="450" d:DesignWidth="600"
+      Title="Registration">
+
+    <Grid>
+        <ScrollViewer Padding="0 15">
+            <StackPanel x:Name="form" Style="{StaticResource StackPanelMain}">
+                <TextBlock Style="{StaticResource Title}">Регистрация</TextBlock>
+                <TextBlock>Введите ваше имя</TextBlock>
+                <TextBox x:Name="NameTextBox"></TextBox>
+                <TextBlock>Введите вашу фамилию</TextBlock>
+                <TextBox x:Name="LastnameTextBox"></TextBox>
+                <TextBlock>Введите ваше отчество</TextBlock>
+                <TextBox x:Name="PatronymicTextBox"></TextBox>
+                <TextBlock>Выберите ваш пол</TextBlock>
+                <ComboBox Name="SexComboBox" Margin="0 0 0 10">
+                    <TextBlock>Мужчина</TextBlock>
+                    <TextBlock>Женщина</TextBlock>
+                </ComboBox>
+                <TextBlock>Выберите вашу дату рождения</TextBlock>
+                <Calendar SelectionMode="SingleDate" Margin="0 0 0 10" x:Name="DateOfbirthdayCalendar" SelectedDatesChanged="DateOfbirthdayCalendarChanged" FirstDayOfWeek="Monday"></Calendar>
+                <TextBlock>Введите полный адрес вашего проживания</TextBlock>
+                <TextBox x:Name="GeolocationTextBox"></TextBox>
+                <TextBlock>Введите ваш телефон</TextBlock>
+                <TextBox x:Name="TelephonTextBox"></TextBox>
+                <TextBlock>Введите вашу профессию, если есть</TextBlock>
+                <TextBox x:Name="ProfessionTextBox"></TextBox>
+                <TextBlock>Придумайте логин</TextBlock>
+                <TextBox x:Name="LoginTextBox"></TextBox>
+                <TextBlock>Придумайте пароль</TextBlock>
+                <PasswordBox x:Name="PasswordTextBox"></PasswordBox>
+                <TextBlock>Повторите пароль</TextBlock>
+                <PasswordBox x:Name="PasswordDoubleTextBox"></PasswordBox>
+                <Button Click="RegistrationButtonClick" HorizontalAlignment="Center" Width="300">Зарегистрироваться</Button>
+                <TextBlock TextAlignment="Right" Margin="0 10 0 0"><Hyperlink NavigateUri="/Views/Pages/AuthPage.xaml" FontSize="10" FontWeight="Medium" Foreground="blue">Вход</Hyperlink></TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

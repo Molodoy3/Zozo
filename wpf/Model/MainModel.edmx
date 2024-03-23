@@ -66,6 +66,7 @@
           <Property Name="Firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Patronimyc" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -87,11 +88,12 @@
           <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Sex" Type="int" Nullable="false" />
-          <Property Name="Geolocation" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Telephon" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Sex" Type="int" />
+          <Property Name="Geolocation" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telephon" Type="nvarchar" MaxLength="20" />
           <Property Name="Profession" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="FK_appointments_headsDepartment">
           <End Role="Specialistes" Type="Self.Specialistes" Multiplicity="0..1">
@@ -263,6 +265,7 @@
           <Property Name="Patronimyc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Appointments" Relationship="Self.FK_appointments_headsDepartment" FromRole="Specialistes" ToRole="Appointments" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -284,13 +287,14 @@
           <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Sex" Type="Int32" Nullable="false" />
-          <Property Name="Geolocation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telephon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Sex" Type="Int32" />
+          <Property Name="Geolocation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telephon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Profession" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Appointments" Relationship="Self.FK_appointments_Users" FromRole="Users" ToRole="Appointments" />
           <NavigationProperty Name="Diseases" Relationship="Self.FK_diseases_Users" FromRole="Users" ToRole="Diseases" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_appointments_headsDepartment">
           <End Role="Specialistes" Type="Self.Specialistes" Multiplicity="0..1">
@@ -452,6 +456,7 @@
           <EntitySetMapping Name="Specialistes">
             <EntityTypeMapping TypeName="zozoDBModel.Specialistes">
               <MappingFragment StoreEntitySet="Specialistes">
+                <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="Idspecialist" ColumnName="Idspecialist" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
@@ -476,6 +481,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="zozoDBModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
