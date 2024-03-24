@@ -104,8 +104,11 @@
     <Compile Include="Views\Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Pages\Client\ClientPersonalCabinet.xaml.cs">
-      <DependentUpon>ClientPersonalCabinet.xaml</DependentUpon>
+    <Compile Include="Views\Pages\EditingPersonalInformation.xaml.cs">
+      <DependentUpon>EditingPersonalInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\PersonalCabinet.xaml.cs">
+      <DependentUpon>PersonalCabinet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -133,7 +136,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Pages\Client\ClientPersonalCabinet.xaml">
+    <Page Include="Views\Pages\EditingPersonalInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\PersonalCabinet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,5 +210,6 @@
       <LastGenOutput>MainModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

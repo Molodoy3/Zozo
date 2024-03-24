@@ -6,12 +6,19 @@
       xmlns:local="clr-namespace:wpf.Views.Pages"
       mc:Ignorable="d" 
       MinHeight="450" d:DesignWidth="600"
-      Title="Registration">
+      Title="Регистрация">
 
     <Grid>
         <ScrollViewer Padding="0 15">
-            <StackPanel x:Name="form" Style="{StaticResource StackPanelMain}">
+            <StackPanel x:Name="form" Style="{StaticResource StackPanelMain}" VerticalAlignment="Center">
                 <TextBlock Style="{StaticResource Title}">Регистрация</TextBlock>
+                <TextBlock x:Name="StatusTextBox" Visibility="Collapsed">Выберите статус пользователя</TextBlock>
+                <ComboBox Visibility="Collapsed" x:Name="StatusComboBox" Margin="0 0 0 10">
+                    <TextBlock>Клиент</TextBlock>
+                    <TextBlock x:Name="SpecComboBoxItem">Специалист</TextBlock>
+                    <TextBlock x:Name="ManagerComboBoxItem">Менеджер</TextBlock>
+                    <TextBlock x:Name="AdminComboBoxItem">Администратор</TextBlock>
+                </ComboBox>
                 <TextBlock>Введите ваше имя</TextBlock>
                 <TextBox x:Name="NameTextBox"></TextBox>
                 <TextBlock>Введите вашу фамилию</TextBlock>
@@ -24,7 +31,7 @@
                     <TextBlock>Женщина</TextBlock>
                 </ComboBox>
                 <TextBlock>Выберите вашу дату рождения</TextBlock>
-                <Calendar SelectionMode="SingleDate" Margin="0 0 0 10" x:Name="DateOfbirthdayCalendar" SelectedDatesChanged="DateOfbirthdayCalendarChanged" FirstDayOfWeek="Monday"></Calendar>
+                <Calendar DisplayDate="01.01.2005" SelectionMode="SingleDate" Margin="0 0 0 10" x:Name="DateOfbirthdayCalendar" SelectedDatesChanged="DateOfbirthdayCalendarChanged" FirstDayOfWeek="Monday"/>
                 <TextBlock>Введите полный адрес вашего проживания</TextBlock>
                 <TextBox x:Name="GeolocationTextBox"></TextBox>
                 <TextBlock>Введите ваш телефон</TextBlock>

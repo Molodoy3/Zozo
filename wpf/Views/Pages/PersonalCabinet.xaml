@@ -6,67 +6,67 @@
       xmlns:local="clr-namespace:wpf.Views.Pages.Client"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ClientPersonalCabinet">
+      Title="Личный кабинет">
 
     <Grid>
         <ScrollViewer Padding="0 15">
             <StackPanel x:Name="form" Style="{StaticResource StackPanelMain}">
-                <TextBlock x:Name="mainTitle" Style="{StaticResource Title}">Личный кабинет пользователя </TextBlock>
+                <TextBlock x:Name="mainTitle" Style="{StaticResource Title}">Личный кабинет</TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel Margin="0 0 30 0">
                         <TextBlock Style="{StaticResource TitleChild}">Личная информация</TextBlock>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                             <DockPanel>
                                 <TextBlock>Логин</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="Login" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                             <DockPanel>
                                 <TextBlock>Фамилия</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="Lastname" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                             <DockPanel>
                                 <TextBlock>Имя</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="Firstname" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                             <DockPanel>
                                 <TextBlock>Отчество</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="Patronymic" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                         <DockPanel>
                                 <TextBlock>Дата рождения</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="DateOfBirthday" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                             <DockPanel>
                                 <TextBlock>Пол</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="Sex" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                             <DockPanel>
                                 <TextBlock>Место жительства</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="Geolocation" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                             <DockPanel>
                                 <TextBlock>Телефон</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="Telephon" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 20">
                             <DockPanel>
                                 <TextBlock>Профессия</TextBlock>
-                                <TextBlock HorizontalAlignment="Right">Иванов</TextBlock>
+                                <TextBlock x:Name="Profession" HorizontalAlignment="Right">Иванов</TextBlock>
                             </DockPanel>
                         </Border>
                         <Button x:Name="editDataUserButton" Click="editDataUserButtonClick">Редактировать</Button>

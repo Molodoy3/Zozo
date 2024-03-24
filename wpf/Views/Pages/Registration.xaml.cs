@@ -24,6 +24,26 @@ namespace wpf.Views.Pages
         public Registration()
         {
             InitializeComponent();
+
+            int idUser = Properties.Settings.Default.IdUser;
+            string statusUser = Properties.Settings.Default.StatusUser;
+            //if (idUser != 0 && statusUser != "client")
+            //{
+                StatusTextBox.Visibility = Visibility.Visible;
+                StatusComboBox.Visibility = Visibility.Visible;
+                StatusComboBox.SelectedIndex = 0;
+                if (statusUser == "specialist")
+                {
+                    SpecComboBoxItem.Visibility = Visibility.Collapsed;
+                    ManagerComboBoxItem.Visibility = Visibility.Collapsed;
+                    AdminComboBoxItem.Visibility = Visibility.Collapsed;
+                }
+                if (statusUser == "manager")
+                {
+                    ManagerComboBoxItem.Visibility = Visibility.Collapsed;
+                    AdminComboBoxItem.Visibility = Visibility.Collapsed;
+                }
+            //}
         }
 
         private void DateOfbirthdayCalendarChanged(object sender, SelectionChangedEventArgs e)
@@ -33,17 +53,37 @@ namespace wpf.Views.Pages
 
         private void RegistrationButtonClick(object sender, RoutedEventArgs e)
         {
-            Dictionary<string, string> dataRegistration = new Dictionary<string, string>();
-            dataRegistration["имя"] = NameTextBox.Text;
-            dataRegistration["фамилия"] = LastnameTextBox.Text;
-            dataRegistration["отчество"] = PatronymicTextBox.Text;
-            dataRegistration["адрес проживания"] = GeolocationTextBox.Text;
-            dataRegistration["профессия"] = ProfessionTextBox.Text;
-            dataRegistration["пароль"] = PasswordTextBox.Password;
-            dataRegistration["повторение пароля"] = PasswordDoubleTextBox.Password;
-            dataRegistration["логин"] = LoginTextBox.Text;
-            dataRegistration["телефон"] = TelephonTextBox.Text;
-            dataRegistration["пол"] = SexComboBox.Text;
+            string statusUser;
+            TextBlock selectedTextBlock = (TextBlock)StatusComboBox.SelectedItem;
+            switch (selectedTextBlock.Text)
+            {
+                case "Специалист":
+                    statusUser = "specialist";
+                    break;
+                case "Менеджер":
+                    statusUser = "manager";
+                    break;
+                case "Администратор":
+                    statusUser = "admin";
+                    break;
+                default:
+                    statusUser = "client";
+                    break;
+            }
+            Dictionary<string, string> dataRegistration = new Dictionary<string, string>
+            {
+                ["статус"] = statusUser,
+                ["имя"] = NameTextBox.Text,
+                ["фамилия"] = LastnameTextBox.Text,
+                ["отчество"] = PatronymicTextBox.Text,
+                ["адрес проживания"] = GeolocationTextBox.Text,
+                ["профессия"] = ProfessionTextBox.Text,
+                ["пароль"] = PasswordTextBox.Password,
+                ["повторение пароля"] = PasswordDoubleTextBox.Password,
+                ["логин"] = LoginTextBox.Text,
+                ["телефон"] = TelephonTextBox.Text,
+                ["пол"] = SexComboBox.Text
+            };
             DateTime? dateOfBirthdayUser = DateOfbirthdayCalendar.SelectedDate;
 
             UsersController usersController = new UsersController();

@@ -7,6 +7,7 @@
 
         <Color x:Key="grey">#D9D9D9</Color>
         <Color x:Key="lightBlue">#D7FCFF</Color>
+        <Color x:Key="Blue">#00F0FF</Color>
         <Color x:Key="Red">#FA5151</Color>
         <Color x:Key="redDark">#FA5170</Color>
         <ResourceDictionary x:Key="ResourceDictionaryMain">
@@ -15,6 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         <SolidColorBrush x:Key="lightBlueBrush" Color="{StaticResource lightBlue}"/>
+        <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}"/>
         <SolidColorBrush x:Key="greyBrush" Color="{StaticResource grey}"/>
         <SolidColorBrush x:Key="RedBrush" Color="{StaticResource Red}"/>
         <SolidColorBrush x:Key="redDarkBrush" Color="{StaticResource redDark}"/>
@@ -43,6 +45,34 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="{StaticResource redDarkBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonBase" BasedOn="{StaticResource CustomFont}">
+            <Setter Property="Margin" Value="0 5 0 0"></Setter>
+            <Setter Property="Background" Value="{StaticResource RedBrush}"></Setter>
+            <Setter Property="Foreground" Value="#fff"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}" Padding="30 10 30 0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource redDarkBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonBlue" BasedOn="{StaticResource ButtonBase}">
+            <Setter Property="Background" Value="{StaticResource BlueBrush}"></Setter>
+            <Setter Property="Foreground" Value="#000"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#00D9E7"/>
                 </Trigger>
             </Style.Triggers>
         </Style>

@@ -23,7 +23,7 @@
         <Rectangle Fill="{StaticResource lightBlueBrush}" Grid.Column="1"></Rectangle>
         <Rectangle Fill="{StaticResource lightBlueBrush}" Grid.Column="2"></Rectangle>
         <Image  Margin="10 0 0 0" Grid.Row="0" Grid.Column="0" Source="/Assets/img/logo.png" Width="40" HorizontalAlignment="Left"></Image>
-        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" Grid.Row="0" Grid.Column="1" FontSize="16" FontWeight="Medium" x:Name="titlePage"  HorizontalAlignment="Center" VerticalAlignment="Center">Название Страницы</TextBlock>
+        <TextBlock Text="{Binding ElementName=MainFrame, Path=Content.Title}" Grid.Row="0" Grid.Column="1" FontSize="16" FontWeight="Medium" x:Name="TitlePage"  HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         <Border Grid.Row="0" Grid.Column="2" Width="40" Height="40"  Style="{StaticResource mainLogo}">
             <Button Background="Transparent" Click="ClientPersonalCabinetLinkButtonClick">
                 <Ellipse Stretch="Uniform">

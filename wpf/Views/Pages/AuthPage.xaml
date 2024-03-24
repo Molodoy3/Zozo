@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:wpf.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
-      Title="AuthPage">
+      Title="Авторизация">
 
     <Grid>
-        <StackPanel x:Name="form" Style="{StaticResource StackPanelMain}">
+        <StackPanel x:Name="form" Style="{StaticResource StackPanelMain}" VerticalAlignment="Center">
             <TextBlock Style="{StaticResource Title}">Вход</TextBlock>
             <TextBlock>Введите логин</TextBlock>
             <TextBox x:Name="LoginTextBox"></TextBox>

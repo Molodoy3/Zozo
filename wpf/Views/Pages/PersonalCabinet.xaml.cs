@@ -40,11 +40,32 @@ namespace wpf.Views.Pages.Client
                 editDataUserButton.Visibility = Visibility.Visible;
                 editPasswordUserButton.Visibility = Visibility.Visible;
             }
+
+            Users user = db.context.Users.FirstOrDefault(x => x.idUser == idUser);
+            if (user != null)
+            {
+                Login.Text = user.Login;
+                Lastname.Text = user.Lastname;
+                Firstname.Text = user.Firstname;
+                Patronymic.Text = user.Patronymic;
+                if (user.Sex == 1)
+                    Sex.Text = "Мужской";
+                else Sex.Text = "Женский";
+                DateOfBirthday.Text = user.Date?.ToString("dd.MM.yy");
+                Geolocation.Text = user.Geolocation;
+                Telephon.Text = user.Telephon;
+                Profession.Text = user.Profession;
+            } else
+                MessageBox.Show("ваш id не найден в БД. Возможно учетная запись была удалена", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        public ClientPersonalCabinet()
+        {
         }
 
         private void editDataUserButtonClick(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new EditingPersonalInformation(idUser));
         }
 
         private void editPasswordUserButtonClick(object sender, RoutedEventArgs e)

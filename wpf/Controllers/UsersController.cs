@@ -7,6 +7,7 @@ using wpf.Model;
 using System.Security.Cryptography;
 using System.Windows;
 using System.Text.RegularExpressions;
+using wpf.Properties;
 
 namespace wpf.Controllers
 {
@@ -63,9 +64,9 @@ namespace wpf.Controllers
         /// <param name="statusUser"></param>
         public void SetLocalSettings(int idUser, string statusUser = "client")
         {
-            Properties.Settings.Default.IdUser = idUser;
-            Properties.Settings.Default.StatusUser = statusUser;
-            Properties.Settings.Default.Save();
+            Settings.Default.IdUser = idUser;
+            Settings.Default.StatusUser = statusUser;
+            Settings.Default.Save();
         }
         /// <summary>
         /// получение хеша строки(пароля) для безопастности его хранения
@@ -88,7 +89,7 @@ namespace wpf.Controllers
         /// <param name="dataRegistration"></param>
         /// <param name="dateOfBirthdayUser"></param>
         /// <returns>возврат true, если нет ошибок</returns>
-        public bool ValidateDataRegistration(Dictionary<string, string> dataRegistration, DateTime? dateOfBirthdayUser)
+        public bool ValidateDataRegistration(Dictionary<string, string> dataRegistration, DateTime? dateOfBirthdayUser, bool needPassword = true)
         {
             try
             {
@@ -111,48 +112,81 @@ namespace wpf.Controllers
                 //Дата
                 if (dateOfBirthdayUser == null)
                     throw new Exception($"Поле дата рождения не может быть пустым!");
+                if (dateOfBirthdayUser > DateTime.Today.AddYears(-18))
+                    throw new Exception($"Вам должно быть минимум 18 лет!");
                 //Логин до 20 символов
                 if (dataRegistration["логин"].Length > 20)
                     throw new Exception($"Поле логин не может быть больше 20 символов!");
                 //правильность заполнения телефона
-                string patternTel = @"^8\d{10}$";
-                if (Regex.IsMatch(dataRegistration["телефон"], patternTel))
-                    throw new Exception($"Номер телефона написан неправльно! Он должен содержать 10 цифр и начинаться на +7, 7 или 8");
+                string patternTel = @"^(\+?7|8)?\d{10}$";
+                if (!Regex.IsMatch(dataRegistration["телефон"], patternTel))
+                    throw new Exception($"Номер телефона написан неправильно! Он должен содержать 10 цифр и начинаться на +7, 7 или 8");
                 //Сложность пароля
-                string patternPass = @"^(?=.*[A-Za-z])(?=.*\d).{6,}$";
-                if (!Regex.IsMatch(dataRegistration["пароль"], patternPass))
-                    throw new Exception($"Пароль слишком слабый! Он должен состоять минимум из 6 символов и содержать минимум 1 цифру и 1 латинскую букву.");
-                //Совпадение паролей
-                if (dataRegistration["пароль"] != dataRegistration["повторение пароля"])
-                    throw new Exception($"Пароли не совпадают");
+                if (needPassword)
+                {
+                    string patternPass = @"^(?=.*[A-Za-z])(?=.*\d).{6,}$";
+                    if (!Regex.IsMatch(dataRegistration["пароль"], patternPass))
+                        throw new Exception($"Пароль слишком слабый! Он должен состоять минимум из 6 символов и содержать минимум 1 цифру и 1 латинскую букву.");
+                    //Совпадение паролей
+                    if (dataRegistration["пароль"] != dataRegistration["повторение пароля"])
+                        throw new Exception($"Пароли не совпадают");
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
             return true;
         }
-        public void RegistrationUser(Dictionary<string, string> dataRegistration, DateTime? dateOfBirthdayUser)
+        public void RegistrationUser(Dictionary<string, string> dataRegistration, DateTime? dateOfBirthdayUser, bool needPassword = true, bool isAnotherUser = false)
         {
             int sexValue = 2;
             if (dataRegistration["пол"] == "Мужчина")
                 sexValue = 1;
-            Users user = new Users()
-            {
-                Login = dataRegistration["логин"],
-                Firstname = dataRegistration["имя"],
-                Lastname = dataRegistration["фамилия"],
-                Patronymic = dataRegistration["отчество"],
-                Geolocation = dataRegistration["адрес проживания"],
-                Profession = dataRegistration["профессия"],
-                Password = GetHash(dataRegistration["пароль"]),
-                Telephon = dataRegistration["телефон"],
-                Sex = sexValue,
-                Date = (DateTime)dateOfBirthdayUser,
-                Status = "user"
-            };
 
-            db.context.Users.Add(user);
+            if (needPassword)
+            {
+                Users user = new Users()
+                {
+                    Login = dataRegistration["логин"],
+                    Firstname = dataRegistration["имя"],
+                    Lastname = dataRegistration["фамилия"],
+                    Patronymic = dataRegistration["отчество"],
+                    Geolocation = dataRegistration["адрес проживания"],
+                    Profession = dataRegistration["профессия"],
+                    Password = GetHash(dataRegistration["пароль"]),
+                    Telephon = dataRegistration["телефон"],
+                    Sex = sexValue,
+                    Date = (DateTime)dateOfBirthdayUser,
+                    Status = dataRegistration["статус"]
+                };
+                db.context.Users.Add(user);
+                //тестить
+                if (!isAnotherUser)
+                    SetLocalSettings(Convert.ToInt32(dataRegistration["id"]), dataRegistration["статус"]);
+            } else
+            {
+                // Находим пользователя по id
+                Users userToUpdate = db.context.Users.Find(Convert.ToInt32(dataRegistration["id"]));
+                if (userToUpdate != null)
+                {
+                    userToUpdate.Login = dataRegistration["логин"];
+                    userToUpdate.Firstname = dataRegistration["имя"];
+                    userToUpdate.Lastname = dataRegistration["фамилия"];
+                    userToUpdate.Patronymic = dataRegistration["отчество"];
+                    userToUpdate.Geolocation = dataRegistration["адрес проживания"];
+                    userToUpdate.Profession = dataRegistration["профессия"];
+                    userToUpdate.Telephon = dataRegistration["телефон"];
+                    userToUpdate.Sex = sexValue;
+                    userToUpdate.Date = (DateTime)dateOfBirthdayUser;
+                    userToUpdate.Status = dataRegistration["статус"];
+                }
+                else throw new Exception("Пользователь не был найден, скорей всего он удален!");
+            }
+
+
             db.context.SaveChanges();
         }
     }

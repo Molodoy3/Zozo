@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:wpf.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="600"
-      Title="MainPage">
+      Title="Главная страница">
 
     <Grid>
         <StackPanel Style="{StaticResource MainWrapStackPanel}">
