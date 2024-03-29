@@ -189,5 +189,33 @@ namespace wpf.Controllers
 
             db.context.SaveChanges();
         }
+        public bool SavePassword(int idUser, string[] passwords)
+        {
+            string patternPass = @"^(?=.*[A-Za-z])(?=.*\d).{6,}$";
+            string hashPassword = GetHash(passwords[0]);
+            if (db.context.Users.FirstOrDefault(x => x.Password == hashPassword) == null)
+            {
+                throw new Exception($"Не верно введен нынешний пароль!");
+                return false;
+            }
+            if (!Regex.IsMatch(passwords[1], patternPass))
+            {
+                throw new Exception($"Пароль слишком слабый! Он должен состоять минимум из 6 символов и содержать минимум 1 цифру и 1 латинскую букву.");
+                return false;
+            }
+            if (passwords[1] != passwords[2])
+            {
+                throw new Exception($"Пароли не совпадают!");
+                return false;
+            }
+            var user = db.context.Users.FirstOrDefault(x => x.idUser == idUser);
+            if (user != null)
+            {
+                user.Password = passwords[1];
+            }
+            db.context.SaveChanges();
+            return true;
+        }
+
     }
 }

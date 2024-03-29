@@ -9,7 +9,7 @@
       Title="Личный кабинет">
 
     <Grid>
-        <ScrollViewer Padding="0 15">
+        <ScrollViewer Padding="0 15" Margin="0,0,0,-357">
             <StackPanel x:Name="form" Style="{StaticResource StackPanelMain}">
                 <TextBlock x:Name="mainTitle" Style="{StaticResource Title}">Личный кабинет</TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +28,8 @@ namespace wpf.Views.Pages
 
             int idUser = Properties.Settings.Default.IdUser;
             string statusUser = Properties.Settings.Default.StatusUser;
-            //if (idUser != 0 && statusUser != "client")
-            //{
+            if (idUser != 0 && statusUser != "client")
+            {
                 StatusTextBox.Visibility = Visibility.Visible;
                 StatusComboBox.Visibility = Visibility.Visible;
                 StatusComboBox.SelectedIndex = 0;
@@ -43,7 +44,7 @@ namespace wpf.Views.Pages
                     ManagerComboBoxItem.Visibility = Visibility.Collapsed;
                     AdminComboBoxItem.Visibility = Visibility.Collapsed;
                 }
-            //}
+            }
         }
 
         private void DateOfbirthdayCalendarChanged(object sender, SelectionChangedEventArgs e)
@@ -82,7 +83,8 @@ namespace wpf.Views.Pages
                 ["повторение пароля"] = PasswordDoubleTextBox.Password,
                 ["логин"] = LoginTextBox.Text,
                 ["телефон"] = TelephonTextBox.Text,
-                ["пол"] = SexComboBox.Text
+                ["пол"] = SexComboBox.Text,
+                ["id"] = Convert.ToString(Properties.Settings.Default.IdUser)
             };
             DateTime? dateOfBirthdayUser = DateOfbirthdayCalendar.SelectedDate;
 

@@ -104,6 +104,9 @@
     <Compile Include="Views\Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\EditingPassword.xaml.cs">
+      <DependentUpon>EditingPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\EditingPersonalInformation.xaml.cs">
       <DependentUpon>EditingPersonalInformation.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\EditingPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

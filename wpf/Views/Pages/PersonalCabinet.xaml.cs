@@ -70,7 +70,7 @@ namespace wpf.Views.Pages.Client
 
         private void editPasswordUserButtonClick(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new EditingPassword(idUser));
         }
 
         private void deleteUserButtonClick(object sender, RoutedEventArgs e)
