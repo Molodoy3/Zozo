@@ -26,7 +26,7 @@ namespace wpf
         public MainWindow()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.IdUser == 0)
+            if (!(Properties.Settings.Default.IdUser > 0))
                 MainFrame.NavigationService.Navigate(new AuthPage());
             else 
                 MainFrame.NavigationService.Navigate(new MainPage());

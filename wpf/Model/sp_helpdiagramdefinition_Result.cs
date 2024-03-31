@@ -10,17 +10,10 @@
 namespace wpf.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Specialistes
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int Idspecialist { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Lastname { get; set; }
-        public string Firstname { get; set; }
-        public string Patronimyc { get; set; }
-        public string Status { get; set; }
-        public string Position { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using wpf.Controllers;
 using wpf.Model;
 
 namespace wpf.Views.Pages.Client
@@ -24,12 +26,30 @@ namespace wpf.Views.Pages.Client
         int idUser;
         string statusUsingUser = Properties.Settings.Default.StatusUser;
         Core db = new Core();
+        List<Appointments> arrayHistoryAppoitments;
+        List<Appointments> arrayPlannedAppoitments;
         public ClientPersonalCabinet(int userID)
         {
             InitializeComponent();
             idUser = userID;
+
+            AppoitmentsController appoitmentsController = new AppoitmentsController();
+            arrayHistoryAppoitments = appoitmentsController.GetHistoryAppointments(idUser);
+            HistoryAppoitmentsListView.ItemsSource = arrayHistoryAppoitments;
+
+            arrayPlannedAppoitments = appoitmentsController.GetPlanedAppointments(idUser);
+            PlanedAppoitmentsListView.ItemsSource= arrayPlannedAppoitments;
+
+
+            //Properties.Settings.Default.IdUser = 10;
+            //idUser = 10;
+
             mainTitle.Text += " " + db.context.Users.FirstOrDefault(x => x.idUser == idUser).Login;
-            if (statusUsingUser != "admin" && statusUsingUser != "manager")
+            if (idUser == Properties.Settings.Default.IdUser)
+            {
+                ExitButton.Visibility = Visibility.Visible;
+            }
+            if (statusUsingUser != "admin")
             {
                 deleteUserButton.Visibility = Visibility.Collapsed;
             }
@@ -75,7 +95,22 @@ namespace wpf.Views.Pages.Client
 
         private void deleteUserButtonClick(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult messageBoxResult = MessageBox.Show("Вы уверены, что хотите удалить аккаунт?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                bool isThatUser = idUser == Properties.Settings.Default.IdUser;
+                if (isThatUser)
+                {
+                    Properties.Settings.Default.IdUser = 0;
+                    Properties.Settings.Default.StatusUser = "";
+                }
+                UsersController usersController = new UsersController();
+                usersController.DeleteUser(idUser);
+                MessageBox.Show("Аккаунт удален!", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (isThatUser)
+                    this.NavigationService.Navigate(new AuthPage());
+                else this.NavigationService.Navigate(new MainPage());
+            }
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -99,6 +134,14 @@ namespace wpf.Views.Pages.Client
                 this.NavigationService.Navigate(new AuthPage());
             }
 
+        }
+
+        private void AppoitmentButtonClick(object sender, RoutedEventArgs e)
+        {
+            Button activeElement = sender as Button;
+            Appointments activeAppointment = activeElement.DataContext as Appointments;
+            int idAppointment = activeAppointment.IdAppointment;
+            this.NavigationService.Navigate(new AppointmentPage(idAppointment));
         }
     }
 }

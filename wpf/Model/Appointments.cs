@@ -11,7 +11,8 @@ namespace wpf.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class Appointments
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -37,8 +38,8 @@ namespace wpf.Model
         public string TreatmentResults { get; set; }
         public string Instructions { get; set; }
         public Nullable<int> IdheadsDepartment { get; set; }
-    
-        public virtual Specialistes Specialistes { get; set; }
+
+
         public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Complaints> Complaints { get; set; }

@@ -216,6 +216,14 @@ namespace wpf.Controllers
             db.context.SaveChanges();
             return true;
         }
-
+        public void DeleteUser(int idUser)
+        {
+            var user = db.context.Users.FirstOrDefault(x => x.idUser == idUser);
+            if (user != null)
+            {
+                db.context.Users.Remove(user);
+                db.context.SaveChanges();
+            }
+        }
     }
 }

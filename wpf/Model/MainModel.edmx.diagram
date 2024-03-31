@@ -4,15 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e8fb971d8d144df4a972562911e5f589" Name="Diagram1">
-        <EntityTypeShape EntityType="zozoDBModel.Appointments" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="zozoDBModel.Complaints" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="zozoDBModel.Diseases" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="zozoDBModel.OralCavity" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="zozoDBModel.Specialistes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="zozoDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="zozoDBModel.Users" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <AssociationConnector Association="zozoDBModel.FK_appointments_headsDepartment" ManuallyRouted="false" />
+      <Diagram DiagramId="00a64f7075cb42db84cd8e3827f7bf63" Name="Diagram1">
+        <EntityTypeShape EntityType="zozoDBModel.Appointments" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="zozoDBModel.Complaints" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="zozoDBModel.Diseases" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="zozoDBModel.OralCavity" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zozoDBModel.Specialistes" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zozoDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="zozoDBModel.Users" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <AssociationConnector Association="zozoDBModel.FK_appointments_Users" ManuallyRouted="false" />
         <AssociationConnector Association="zozoDBModel.FK_complaints_appointments" ManuallyRouted="false" />
         <AssociationConnector Association="zozoDBModel.FK_oralCavity_appointments" ManuallyRouted="false" />

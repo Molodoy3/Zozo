@@ -9,7 +9,7 @@
       Title="Личный кабинет">
 
     <Grid>
-        <ScrollViewer Padding="0 15" Margin="0,0,0,-357">
+        <ScrollViewer Padding="0 15">
             <StackPanel x:Name="form" Style="{StaticResource StackPanelMain}">
                 <TextBlock x:Name="mainTitle" Style="{StaticResource Title}">Личный кабинет</TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -75,11 +75,55 @@
                     </StackPanel>
                     <StackPanel>
                         <TextBlock Style="{StaticResource TitleChild}">Планируемые записи</TextBlock>
-                        
+                        <ListView Margin="0 0 0 30" x:Name="PlanedAppoitmentsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="7" Padding="7" Background="{StaticResource lightBlueBrush}" MinHeight="40">
+                                        <Button x:Name="AppoitmentButton" Background="Transparent" BorderThickness="0" Click="AppoitmentButtonClick">
+                                            <StackPanel>
+                                                <DockPanel MinWidth="150" Margin="0 0 0 10">
+                                                    <TextBlock Margin="0 0 40 0" HorizontalAlignment="Center" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding Diagnosis}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Date, StringFormat={}{0:dd.MM hh:mm}}" Margin="0 4 0 0" Foreground="#525252"></TextBlock>
+                                                </DockPanel>
+                                                <TextBlock Foreground="#000" Text="{Binding GetDoctorNameById}"></TextBlock>
+                                            </StackPanel>
+                                        </Button>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackPanel>
                 </StackPanel>
+                <TextBlock Margin="0 30 0 10" Style="{StaticResource TitleChild}">История посещений</TextBlock>
+                <ListView Margin="0 0 0 30" x:Name="HistoryAppoitmentsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="7" Padding="7" Background="{StaticResource lightBlueBrush}" MinHeight="40">
+                                <Button x:Name="AppoitmentButton" Background="Transparent" BorderThickness="0" Click="AppoitmentButtonClick">
+                                    <StackPanel>
+                                        <DockPanel MinWidth="150" Margin="0 0 0 10">
+                                            <TextBlock Margin="0 0 40 0" HorizontalAlignment="Center" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding Diagnosis}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                                            <TextBlock HorizontalAlignment="Center" Text="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}" Margin="0 4 0 0" Foreground="#525252"></TextBlock>
+                                        </DockPanel>
+                                        <TextBlock Foreground="#000" Text="{Binding GetDoctorNameById}"></TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <Button x:Name="DownloadMedicalRecordsButton" Click="DownloadMedicalRecordsButtonClick">Скачать последнию выписку медицинской карты (Word)</Button>
-                <Button x:Name="ExitButton" Click="ExitButtonClick" HorizontalAlignment="Left">Выйти</Button>
+                <Button x:Name="ExitButton" Click="ExitButtonClick" HorizontalAlignment="Left" Visibility="Collapsed">Выйти</Button>
             </StackPanel>
         </ScrollViewer>
     </Grid>
