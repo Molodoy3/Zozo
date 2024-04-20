@@ -27,19 +27,19 @@ namespace wpf.Views.Pages
             InitializeComponent();
 
             int idUser = Properties.Settings.Default.IdUser;
-            string statusUser = Properties.Settings.Default.StatusUser;
-            if (idUser != 0 && statusUser != "client")
+            string statusUserThat = Properties.Settings.Default.StatusUser;
+            if (statusUserThat == "specialist" || statusUserThat == "manager" || statusUserThat == "admin")
             {
                 StatusTextBox.Visibility = Visibility.Visible;
                 StatusComboBox.Visibility = Visibility.Visible;
                 StatusComboBox.SelectedIndex = 0;
-                if (statusUser == "specialist")
+                if (statusUserThat == "specialist")
                 {
                     SpecComboBoxItem.Visibility = Visibility.Collapsed;
                     ManagerComboBoxItem.Visibility = Visibility.Collapsed;
                     AdminComboBoxItem.Visibility = Visibility.Collapsed;
                 }
-                if (statusUser == "manager")
+                if (statusUserThat == "manager" || statusUserThat == "HeadsDepartment")
                 {
                     ManagerComboBoxItem.Visibility = Visibility.Collapsed;
                     AdminComboBoxItem.Visibility = Visibility.Collapsed;
@@ -54,22 +54,29 @@ namespace wpf.Views.Pages
 
         private void RegistrationButtonClick(object sender, RoutedEventArgs e)
         {
-            string statusUser;
-            TextBlock selectedTextBlock = (TextBlock)StatusComboBox.SelectedItem;
-            switch (selectedTextBlock.Text)
+            string statusUser = "client";
+            string statusUserThat = Properties.Settings.Default.StatusUser;
+            if (statusUserThat == "specialist" || statusUserThat == "manager" || statusUserThat == "admin" || statusUserThat == "HeadsDepartment")
             {
-                case "Специалист":
-                    statusUser = "specialist";
-                    break;
-                case "Менеджер":
-                    statusUser = "manager";
-                    break;
-                case "Администратор":
-                    statusUser = "admin";
-                    break;
-                default:
-                    statusUser = "client";
-                    break;
+                TextBlock selectedTextBlock = (TextBlock)StatusComboBox.SelectedItem;
+                switch (selectedTextBlock.Text)
+                {
+                    case "Специалист":
+                        statusUser = "specialist";
+                        break;
+                    case "Менеджер":
+                        statusUser = "manager";
+                        break;
+                    case "Администратор":
+                        statusUser = "admin";
+                        break;
+                    case "Заведующий отделением":
+                        statusUser = "HeadsDepartment";
+                        break;
+                    default:
+                        statusUser = "client";
+                        break;
+                }
             }
             Dictionary<string, string> dataRegistration = new Dictionary<string, string>
             {

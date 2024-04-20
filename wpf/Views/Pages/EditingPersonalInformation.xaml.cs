@@ -36,10 +36,10 @@ namespace wpf.Views.Pages
 
             string statusUser = Properties.Settings.Default.StatusUser;
             //Если редачит менеджер или админ, может менять логин
-            if (statusUser == "admin" || statusUser == "manager")
+            if (statusUser == "admin" || statusUser == "manager" || statusUser == "HeadsDepartment")
                 LoginTextBox.IsEnabled = true;
             //менеджер не может изменить другого менеджера или админа
-            if (statusUser == "manager" && (user.Status == "manager" || user.Status == "admin"))
+            if (statusUser == "manager" && (user.Status == "manager" || user.Status == "admin" || user.Status == "HeadsDepartment"))
                 LoginTextBox.IsEnabled = false;
 
             if (user != null)
@@ -61,6 +61,9 @@ namespace wpf.Views.Pages
                         case "admin":
                             indexComboBoxStatusUser = 3;
                             break;
+                        case "HeadsDepartment":
+                            indexComboBoxStatusUser = 4;
+                            break;
                         default:
                             indexComboBoxStatusUser = 0;
                             break;
@@ -73,7 +76,7 @@ namespace wpf.Views.Pages
                         ManagerComboBoxItem.Visibility = Visibility.Collapsed;
                         AdminComboBoxItem.Visibility = Visibility.Collapsed;
                     }
-                    if (statusUser == "manager")
+                    if (statusUser == "manager" || statusUser == "HeadsDepartment")
                     {
                         ManagerComboBoxItem.Visibility = Visibility.Collapsed;
                         AdminComboBoxItem.Visibility = Visibility.Collapsed;
@@ -112,6 +115,9 @@ namespace wpf.Views.Pages
                     break;
                 case "Администратор":
                     statusUser = "admin";
+                    break;
+                case "Заведующий отделением":
+                    statusUser = "HeadsDepartment";
                     break;
                 default:
                     statusUser = "client";

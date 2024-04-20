@@ -69,9 +69,6 @@
     <Compile Include="Model\Appointments.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Complaints.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Diseases.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
@@ -95,9 +92,6 @@
     </Compile>
     <Compile Include="Model\Partial\Appointments.cs" />
     <Compile Include="Model\Partial\Users.cs" />
-    <Compile Include="Model\Specialistes.cs">
-      <DependentUpon>MainModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
@@ -110,11 +104,17 @@
     <Compile Include="Model\Users.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\AddAppointment.xaml.cs">
+      <DependentUpon>AddAppointment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\AppointmentPage.xaml.cs">
       <DependentUpon>AppointmentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\DoctorDiary.xaml.cs">
+      <DependentUpon>DoctorDiary.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\EditingPassword.xaml.cs">
       <DependentUpon>EditingPassword.xaml</DependentUpon>
@@ -147,11 +147,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Pages\AddAppointment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\AppointmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\DoctorDiary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

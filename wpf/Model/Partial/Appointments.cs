@@ -13,9 +13,40 @@ namespace wpf.Model
             get
             {
                 Core core = new Core();
-                return "Врач: " + core.context.Users.FirstOrDefault(x => x.idUser == IdDoctor).FIO;
+                return core.context.Users.FirstOrDefault(x => x.idUser == IdDoctor)?.FIO;
             }
    
+        }
+        public string DiagnosisParrentAppointments
+        {
+            get
+            {
+                Core core = new Core();
+                return core.context.Appointments.FirstOrDefault(x => x.IdAppointment == IdParrentAppointments)?.Diagnosis;
+            }
+        }
+        public string PatientAppointment
+        {
+            get
+            {
+                Core core = new Core();
+                return core.context.Users.FirstOrDefault(x => x.idUser == IdPatient)?.FIO;
+            }
+        }
+        public string headsDepartmentAppointment
+        {
+            get
+            {
+                Core core = new Core();
+                return core.context.Users.FirstOrDefault(x => x.idUser == IdheadsDepartment)?.FIO;
+            }
+        }
+        public string idAndDiagnosis
+        { 
+            get
+            {
+                return "id " + IdAppointment + ": " + Diagnosis;
+            }
         }
     }
 }

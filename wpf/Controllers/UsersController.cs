@@ -114,6 +114,11 @@ namespace wpf.Controllers
                     throw new Exception($"Поле дата рождения не может быть пустым!");
                 if (dateOfBirthdayUser > DateTime.Today.AddYears(-18))
                     throw new Exception($"Вам должно быть минимум 18 лет!");
+                //Проверка дублирования логина
+                string loginValue = dataRegistration["логин"];
+                var logins = db.context.Users.Where(x => x.Login == loginValue).ToList();
+                if (logins.Count > 0)
+                    throw new Exception($"Такой логин уже используется!");
                 //Логин до 20 символов
                 if (dataRegistration["логин"].Length > 20)
                     throw new Exception($"Поле логин не может быть больше 20 символов!");
@@ -224,6 +229,34 @@ namespace wpf.Controllers
                 db.context.Users.Remove(user);
                 db.context.SaveChanges();
             }
+        }
+        public bool UserIsDoctor(int idUser)
+        {
+            return db.context.Users.FirstOrDefault(x =>x.idUser == idUser).Status == "specialist" ? true : false;
+        }
+        public List<Users> getClintsContactDoctor(int idDoctor)
+        {
+            var appointments = db.context.Appointments.Where(x => x.IdDoctor == idDoctor).ToList();
+            var users = new HashSet<Users>();
+
+            foreach (var appointment in appointments)
+            {
+                var user = db.context.Users.FirstOrDefault(x => x.idUser == appointment.IdPatient);
+                if (user != null)
+                {
+                    users.Add(user);
+                }
+            }
+
+            return users.ToList();
+        }
+        public List<Users> getAllUsers()
+        {
+            return db.context.Users.ToList();
+        }
+        public List<Users> GetAllUsersHeadsDepartment()
+        {
+            return db.context.Users.Where(x => x.Status == "HeadsDepartment").ToList();
         }
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using wpf.Controllers;
 using wpf.Model;
+using wpf.Properties;
 
 namespace wpf.Views.Pages.Client
 {
@@ -40,6 +41,12 @@ namespace wpf.Views.Pages.Client
             arrayPlannedAppoitments = appoitmentsController.GetPlanedAppointments(idUser);
             PlanedAppoitmentsListView.ItemsSource= arrayPlannedAppoitments;
 
+            //кнопку дневник врача показываем только если пользователь является врачом
+            UsersController usersController = new UsersController();
+            if (usersController.UserIsDoctor(idUser))
+            {
+                DoctorDiaryButton.Visibility = Visibility.Visible;
+            }
 
             //Properties.Settings.Default.IdUser = 10;
             //idUser = 10;
@@ -55,7 +62,7 @@ namespace wpf.Views.Pages.Client
             }
             editDataUserButton.Visibility= Visibility.Collapsed;
             editPasswordUserButton.Visibility= Visibility.Collapsed;
-            if (idUser == Properties.Settings.Default.IdUser || statusUsingUser == "admin" || statusUsingUser == "manager")
+            if (idUser == Properties.Settings.Default.IdUser || statusUsingUser == "admin" || statusUsingUser == "manager" || statusUsingUser == "HeadsDepartment")
             {
                 editDataUserButton.Visibility = Visibility.Visible;
                 editPasswordUserButton.Visibility = Visibility.Visible;
@@ -103,6 +110,7 @@ namespace wpf.Views.Pages.Client
                 {
                     Properties.Settings.Default.IdUser = 0;
                     Properties.Settings.Default.StatusUser = "";
+                    Settings.Default.Save();
                 }
                 UsersController usersController = new UsersController();
                 usersController.DeleteUser(idUser);
@@ -130,6 +138,7 @@ namespace wpf.Views.Pages.Client
             {
                 Properties.Settings.Default.IdUser = 0;
                 Properties.Settings.Default.StatusUser = "";
+                Settings.Default.Save();
                 MessageBox.Show("Вы успешно вышли!\nПеренаправление на страницу авторизации.", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.NavigationService.Navigate(new AuthPage());
             }
@@ -142,6 +151,11 @@ namespace wpf.Views.Pages.Client
             Appointments activeAppointment = activeElement.DataContext as Appointments;
             int idAppointment = activeAppointment.IdAppointment;
             this.NavigationService.Navigate(new AppointmentPage(idAppointment));
+        }
+
+        private void DoctorDiaryClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new DoctorDiary(idUser));
         }
     }
 }

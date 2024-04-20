@@ -18,6 +18,7 @@
                     <TextBlock x:Name="SpecComboBoxItem">Специалист</TextBlock>
                     <TextBlock x:Name="ManagerComboBoxItem">Менеджер</TextBlock>
                     <TextBlock x:Name="AdminComboBoxItem">Администратор</TextBlock>
+                    <TextBlock x:Name="HeadsDepartmentComboBoxItem">Заведующий отделением</TextBlock>
                 </ComboBox>
                 <TextBlock>Логин</TextBlock>
                 <TextBox IsEnabled="False" x:Name="LoginTextBox"></TextBox>

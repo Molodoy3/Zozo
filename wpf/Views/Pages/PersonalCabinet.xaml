@@ -122,6 +122,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <Button Style="{StaticResource ButtonBlue}" Visibility="Collapsed" x:Name="DoctorDiaryButton" Click="DoctorDiaryClick">Дневник врача</Button>
                 <Button x:Name="DownloadMedicalRecordsButton" Click="DownloadMedicalRecordsButtonClick">Скачать последнию выписку медицинской карты (Word)</Button>
                 <Button x:Name="ExitButton" Click="ExitButtonClick" HorizontalAlignment="Left" Visibility="Collapsed">Выйти</Button>
             </StackPanel>

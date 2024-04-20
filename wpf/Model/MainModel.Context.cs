@@ -27,13 +27,11 @@ namespace wpf.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Appointments> Appointments { get; set; }
-        public virtual DbSet<Complaints> Complaints { get; set; }
         public virtual DbSet<Diseases> Diseases { get; set; }
         public virtual DbSet<OralCavity> OralCavity { get; set; }
-        public virtual DbSet<Specialistes> Specialistes { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Appointments> Appointments { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

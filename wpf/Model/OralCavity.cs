@@ -16,12 +16,12 @@ namespace wpf.Model
     {
         public int IdOralCavity { get; set; }
         public int AppointmentsId { get; set; }
-        public string Position { get; set; }
+        public int Position { get; set; }
         public int Number { get; set; }
-        public string Hygiene { get; set; }
-        public string DentalDystopia { get; set; }
-        public string GingivalRecession { get; set; }
-        public string GMA { get; set; }
+        public int Hygiene { get; set; }
+        public int DentalDystopia { get; set; }
+        public int GingivalRecession { get; set; }
+        public int GMA { get; set; }
     
         public virtual Appointments Appointments { get; set; }
     }
