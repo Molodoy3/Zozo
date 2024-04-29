@@ -52,7 +52,7 @@ namespace wpf.Views.Pages
             Button activeElement = sender as Button;
             Appointments activeAppointment = activeElement.DataContext as Appointments;
             int idAppointment = activeAppointment.IdAppointment;
-            NavigationService.Navigate(new AppointmentPage(idAppointment));
+            NavigationService.Navigate(new AppointmentPage(idAppointment, idDoctor));
         }
 
         private void UserButtonClick(object sender, RoutedEventArgs e)

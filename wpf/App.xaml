@@ -48,6 +48,12 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="TableCell">
+            <Setter Property="Background" Value="{StaticResource BlueBrush}"></Setter>
+        </Style>
+        <Style x:Key="TitleTableCell" TargetType="TableCell">
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
         <Style TargetType="Button" x:Key="ButtonBase" BasedOn="{StaticResource CustomFont}">
             <Setter Property="Margin" Value="0 5 0 0"></Setter>
             <Setter Property="Background" Value="{StaticResource RedBrush}"></Setter>

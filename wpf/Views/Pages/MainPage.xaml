@@ -9,26 +9,69 @@
       Title="Главная страница">
 
     <Grid>
-        <StackPanel Style="{StaticResource MainWrapStackPanel}">
-            <TextBlock Style="{StaticResource Title}">Стоматологическая клиника Зузу</TextBlock>
-            <TextBlock>
+        <ScrollViewer Padding="0 15">
+            <StackPanel Style="{StaticResource MainWrapStackPanel}">
+                <TextBlock Style="{StaticResource Title}">Стоматологическая клиника Зузу</TextBlock>
+                <TextBlock>
            Наша клиника предлагает инновационный подход к стоматологии, сочетая высокий профессионализм с уютной атмосферой и заботливым отношением к каждому пациенту.
-            </TextBlock>
-            <TextBlock >
+                </TextBlock>
+                <TextBlock >
            У нас работают опытные стоматологи-волшебники, которые с легкостью решают любые стоматологические задачи, делая вашу улыбку ярче и здоровее!
-            </TextBlock>
-            <TextBlock>
+                </TextBlock>
+                <TextBlock>
        Мы используем только самое современное оборудование и инновационные методики лечения, чтобы обеспечить нашим пациентам комфорт и безопасность. 
            Приходите к нам в "Зузу" и убедитесь сами в качестве наших услуг! Ваша улыбка - наша гордость!
-            </TextBlock>
+                </TextBlock>
 
-            <DockPanel VerticalAlignment="Center" Margin="0 10 0 0">
-                <TextBlock HorizontalAlignment="Left" Style="{StaticResource Title}">Найти специалиста</TextBlock>
-                <Canvas HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Image Source="/Assets/img/icons/search.png" Width="12" Canvas.Left="-25" Height="15" Canvas.Top="-12" RenderTransformOrigin="-1.244,0.089"/>
-                    <TextBox Text="Поиск по фамилии" Canvas.Left="-210" Canvas.Top="-18" HorizontalAlignment="Left" VerticalAlignment="Center" Width="210"/>
-                </Canvas>
-            </DockPanel>
-        </StackPanel>
+                <DockPanel VerticalAlignment="Center" Margin="0 10 0 0">
+                    <TextBlock HorizontalAlignment="Left" Style="{StaticResource Title}">Найти пользователя</TextBlock>
+                    <Canvas HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Image Source="/Assets/img/icons/search.png" Width="12" Canvas.Left="-25" Height="15" Canvas.Top="-12" RenderTransformOrigin="-1.244,0.089"/>
+                        <TextBox Text="Поиск по фамилии" Canvas.Left="-210" Canvas.Top="-18" HorizontalAlignment="Left" VerticalAlignment="Center" Width="210"/>
+                    </Canvas>
+
+                </DockPanel>
+                <ListView Margin="0 0 0 30" x:Name="ClientsListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Left"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="7" Padding="4" Background="{StaticResource lightBlueBrush}" MinHeight="40">
+                                <Button x:Name="UserButton" Background="Transparent" BorderThickness="0" Click="UserButtonClick">
+                                    <StackPanel>
+                                        <DockPanel MinWidth="150" Margin="0 0 0 10">
+                                            <Border Grid.Row="0" Grid.Column="2" Width="40" Height="40"  Style="{StaticResource mainLogo}">
+                                                <Ellipse Stretch="Uniform">
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush/>
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </Border>
+                                            <StackPanel>
+                                                <TextBlock Margin="0 0 0 10" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding FIO}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                                                <TextBlock Text="{Binding Age}" Margin="0 4 0 5" Foreground="#525252"></TextBlock>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Foreground="#525252" Margin="0 0 4 0">Кол-во общий посещений:</TextBlock>
+                                                    <TextBlock Text="{Binding NumberOfVisits}" Foreground="#525252"></TextBlock>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Margin="0 0 4 0" Foreground="#525252">Статус:</TextBlock>
+                                                    <TextBlock Text="{Binding StatusUser}" Foreground="#525252"></TextBlock>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DockPanel>
+                                        <TextBlock Foreground="#000" Text="{Binding GetDoctorNameById}"></TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button x:Name="AddNewUserButton" Click="AddNewUserButtonClick" Width="250" HorizontalAlignment="Left" Visibility="Collapsed">Добавить пользователя</Button>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

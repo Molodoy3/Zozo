@@ -17,12 +17,12 @@ namespace wpf.Model
             }
    
         }
-        public string DiagnosisParrentAppointments
+        public string ReferralTextParrentAppointments
         {
             get
             {
                 Core core = new Core();
-                return core.context.Appointments.FirstOrDefault(x => x.IdAppointment == IdParrentAppointments)?.Diagnosis;
+                return core.context.Appointments.FirstOrDefault(x => x.IdAppointment == IdParrentAppointments)?.ReferralText;
             }
         }
         public string PatientAppointment
@@ -41,11 +41,11 @@ namespace wpf.Model
                 return core.context.Users.FirstOrDefault(x => x.idUser == IdheadsDepartment)?.FIO;
             }
         }
-        public string idAndDiagnosis
+        public string idAndReferralText
         { 
             get
             {
-                return "id " + IdAppointment + ": " + Diagnosis;
+                return "id " + IdAppointment + ": " + ReferralText;
             }
         }
     }

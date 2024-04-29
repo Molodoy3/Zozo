@@ -25,7 +25,7 @@
                                     <Button x:Name="AppoitmentButton" Background="Transparent" BorderThickness="0" Click="AppoitmentButtonClick">
                                         <StackPanel>
                                             <DockPanel MinWidth="150" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 40 0" HorizontalAlignment="Center" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding Diagnosis}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                                                <TextBlock Margin="0 0 40 0" HorizontalAlignment="Center" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding ReferralText}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
                                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Date, StringFormat={}{0:dd.MM hh:mm}}" Margin="0 4 0 0" Foreground="#525252"></TextBlock>
                                             </DockPanel>
                                             <TextBlock Foreground="#000" Text="{Binding GetDoctorNameById}"></TextBlock>
@@ -51,7 +51,7 @@
                                     <Button x:Name="AppoitmentButton" Background="Transparent" BorderThickness="0" Click="AppoitmentButtonClick">
                                         <StackPanel>
                                             <DockPanel MinWidth="150" Margin="0 0 0 10">
-                                                <TextBlock Margin="0 0 40 0" HorizontalAlignment="Center" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding Diagnosis}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                                                <TextBlock Margin="0 0 40 0" HorizontalAlignment="Center" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding ReferralText}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
                                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Date, StringFormat={}{0:dd.MM.yyyy}}" Margin="0 4 0 0" Foreground="#525252"></TextBlock>
                                             </DockPanel>
                                             <TextBlock Foreground="#000" Text="{Binding GetDoctorNameById}"></TextBlock>
@@ -72,7 +72,7 @@
                         </ListView.ItemsPanel>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border CornerRadius="7" Padding="7" Background="{StaticResource lightBlueBrush}" MinHeight="40">
+                                <Border CornerRadius="7" Padding="4" Background="{StaticResource lightBlueBrush}" MinHeight="40">
                                     <Button x:Name="UserButton" Background="Transparent" BorderThickness="0" Click="UserButtonClick">
                                         <StackPanel>
                                             <DockPanel MinWidth="150" Margin="0 0 0 10">
@@ -84,9 +84,16 @@
                                                     </Ellipse>
                                                 </Border>
                                                 <StackPanel>
-                                                    <TextBlock Margin="0 0 40 0" HorizontalAlignment="Center" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding FIO}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
-                                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Age}" Margin="0 4 0 0" Foreground="#525252"></TextBlock>
-                                                    <TextBlock HorizontalAlignment="Center" Text="{Binding NumberOfVisits}" Margin="0 4 0 0" Foreground="#525252"></TextBlock>
+                                                    <TextBlock Margin="0 0 0 10" Style="{StaticResource TitleChild}" Foreground="#000" Text="{Binding FIO}" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                                                    <TextBlock Text="{Binding Age}" Margin="0 4 0 0" Foreground="#525252"></TextBlock>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Foreground="#525252" Margin="0 0 4 0">Кол-во общий посещений: </TextBlock>
+                                                        <TextBlock Text="{Binding NumberOfVisits}" Foreground="#525252"></TextBlock>
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Margin="0 0 4 0" Foreground="#525252">Статус: </TextBlock>
+                                                        <TextBlock Text="{Binding StatusUser}" Foreground="#525252"></TextBlock>
+                                                    </StackPanel>
                                                 </StackPanel>
                                             </DockPanel>
                                             <TextBlock Foreground="#000" Text="{Binding GetDoctorNameById}"></TextBlock>

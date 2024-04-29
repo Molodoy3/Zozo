@@ -23,6 +23,8 @@
                     <TextBlock>Диагноз</TextBlock>
                     <TextBox x:Name="DiagnosisTextBox"></TextBox>
                     <TextBlock TextWrapping="Wrap">Перенесенные и сопуствующие заболевания</TextBlock>
+                    <TextBox x:Name="PastAndConcurrentIllnessesTextBox"></TextBox>
+                    <TextBlock TextWrapping="Wrap">Развитие настоящего заболевания</TextBlock>
                     <TextBox x:Name="DevelopmentRealDiseaseTextBox"></TextBox>
                     <TextBlock TextWrapping="Wrap">Данные объективного обследования</TextBlock>
                     <TextBox x:Name="ObjectiveResearchDataTextBox"></TextBox>
@@ -65,8 +67,8 @@
                             </Table.Columns>
                             <TableRowGroup>
                                 <TableRow Name="Hygiene">
-                                    <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                        <Paragraph TextAlignment="Center"></Paragraph>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
+                                        <Paragraph>Гигиена</Paragraph>
                                     </TableCell>
                                     <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
                                         <Paragraph TextAlignment="Center"></Paragraph>
@@ -118,7 +120,7 @@
                                     </TableCell>
                                 </TableRow>
                                 <TableRow Name="DentalDystopia">
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>дистопия зубов</Paragraph>
                                     </TableCell>
                                     <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
@@ -171,7 +173,7 @@
                                     </TableCell>
                                 </TableRow>
                                 <TableRow Name="GingivalRecession">
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>рецесия десны</Paragraph>
                                     </TableCell>
                                     <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
@@ -224,7 +226,7 @@
                                     </TableCell>
                                 </TableRow>
                                 <TableRow Name="GMA">
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>гма</Paragraph>
                                     </TableCell>
                                     <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
@@ -277,60 +279,60 @@
                                     </TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>Номер зуба</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>8</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>7</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>6</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>5</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>4</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>3</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>2</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>1</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>1</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>2</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>3</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>4</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>5</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>6</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>7</Paragraph>
                                     </TableCell>
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>8</Paragraph>
                                     </TableCell>
                                 </TableRow>
                                 <TableRow Name="Hygiene2">
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>Гигиена</Paragraph>
                                     </TableCell>
                                     <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
@@ -383,7 +385,7 @@
                                     </TableCell>
                                 </TableRow>
                                 <TableRow Name="DentalDystopia2">
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>дистопия зубов</Paragraph>
                                     </TableCell>
                                     <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
@@ -436,7 +438,7 @@
                                     </TableCell>
                                 </TableRow>
                                 <TableRow Name="GingivalRecession2">
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>рецесия десны</Paragraph>
                                     </TableCell>
                                     <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
@@ -489,7 +491,7 @@
                                     </TableCell>
                                 </TableRow>
                                 <TableRow Name="GMA2">
-                                    <TableCell>
+                                    <TableCell Style="{StaticResource TitleTableCell}">
                                         <Paragraph>гма</Paragraph>
                                     </TableCell>
                                     <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">

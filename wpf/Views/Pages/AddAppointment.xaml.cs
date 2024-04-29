@@ -32,7 +32,7 @@ namespace wpf.Views.Pages
 
             var appoitments = appoitmentsController.GetAllAppoitmentsForDoctor(doctorID);
             ParrentAppointmentsComboBox.ItemsSource = appoitments;
-            ParrentAppointmentsComboBox.DisplayMemberPath = "idAndDiagnosis";
+            ParrentAppointmentsComboBox.DisplayMemberPath = "idAndReferralText";
             ParrentAppointmentsComboBox.SelectedValuePath = "IdAppointment";
 
             UsersController usersController = new UsersController();
@@ -51,7 +51,7 @@ namespace wpf.Views.Pages
         private void AddAppointmentClick(object sender, RoutedEventArgs e)
         {
 
-            object[] dataAppointment = new object[15];
+            object[] dataAppointment = new object[16];
             dataAppointment[0] = dateOfAppointmentCalendar.SelectedDate;
             dataAppointment[1] = ParrentAppointmentsComboBox.SelectedValue;
             dataAppointment[2] = PatientsComboBox.SelectedValue;
@@ -59,14 +59,15 @@ namespace wpf.Views.Pages
             dataAppointment[4] = doctorID;
             dataAppointment[5] = ReferralTextTextBox.Text;
             dataAppointment[6] = DiagnosisTextBox.Text;
-            dataAppointment[7] = DevelopmentRealDiseaseTextBox.Text;
-            dataAppointment[8] = ObjectiveResearchDataTextBox.Text;
-            dataAppointment[9] = BiteDataTextBox.Text;
-            dataAppointment[10] = ConditionCavityTextBox.Text;
-            dataAppointment[11] = DataXrayStudiesTextBox.Text;
-            dataAppointment[12] = TreatmentTextBox.Text;
-            dataAppointment[13] = TreatmentResultsTextBox.Text;
-            dataAppointment[14] = InstructionsTextBox.Text;
+            dataAppointment[7] = PastAndConcurrentIllnessesTextBox.Text;
+            dataAppointment[8] = DevelopmentRealDiseaseTextBox.Text;
+            dataAppointment[9] = ObjectiveResearchDataTextBox.Text;
+            dataAppointment[10] = BiteDataTextBox.Text;
+            dataAppointment[11] = ConditionCavityTextBox.Text;
+            dataAppointment[12] = DataXrayStudiesTextBox.Text;
+            dataAppointment[13] = TreatmentTextBox.Text;
+            dataAppointment[14] = TreatmentResultsTextBox.Text;
+            dataAppointment[15] = InstructionsTextBox.Text;
 
             int[,] dataOralCavity = new int[32, 6];
             //берем все верхние зубы
@@ -313,9 +314,9 @@ namespace wpf.Views.Pages
 
             try
             {
-                appoitmentsController.ValidateAppointmentData(dataAppointment);
+                appoitmentsController.ValidateAppointmentData(dataAppointment, new List<int>());
                 appoitmentsController.AddAppointment(dataAppointment, dataOralCavity);
-                MessageBox.Show("Запись добавлена!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Запись добавлена!", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService.Navigate(new DoctorDiary(doctorID));
             }
             catch (Exception ex)

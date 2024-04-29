@@ -75,6 +75,8 @@ namespace wpf.Views.Pages.Client
                 Lastname.Text = user.Lastname;
                 Firstname.Text = user.Firstname;
                 Patronymic.Text = user.Patronymic;
+                Status.Text = user.StatusUser;
+                NumberOfVisits.Text = user.NumberOfVisits;
                 if (user.Sex == 1)
                     Sex.Text = "Мужской";
                 else Sex.Text = "Женский";
@@ -150,7 +152,7 @@ namespace wpf.Views.Pages.Client
             Button activeElement = sender as Button;
             Appointments activeAppointment = activeElement.DataContext as Appointments;
             int idAppointment = activeAppointment.IdAppointment;
-            this.NavigationService.Navigate(new AppointmentPage(idAppointment));
+            NavigationService.Navigate(new AppointmentPage(idAppointment, idUser));
         }
 
         private void DoctorDiaryClick(object sender, RoutedEventArgs e)

@@ -8,13 +8,48 @@ using System.Security.Cryptography;
 using System.Windows;
 using System.Text.RegularExpressions;
 using wpf.Properties;
+using wpf.Views.Pages;
 
 namespace wpf.Controllers
 {
     internal class UsersController
     {
         private Core db = new Core();
-
+        public string GetSexUser(int idAppointment)
+        {
+            int idPatient = db.context.Appointments.FirstOrDefault(x => x.IdAppointment == idAppointment).IdPatient;
+            return db.context.Users.FirstOrDefault(x => x.idUser == idPatient).Sex == 0 ? "Женский" : "Мужской";
+        }
+        public string GetAge(int idAppointment)
+        {
+            int idPatient = db.context.Appointments.FirstOrDefault(x => x.IdAppointment == idAppointment).IdPatient;
+            return db.context.Users.FirstOrDefault(x => x.idUser == idPatient).Age;
+        }
+        public string GetDoctor(int idAppointment)
+        {
+            int idDoctor = db.context.Appointments.FirstOrDefault(x => x.IdAppointment == idAppointment).IdDoctor;
+            return db.context.Users.FirstOrDefault(x => x.idUser == idDoctor).FIO;
+        }
+        public string GetIdheadsDepartment(int idAppointment)
+        {
+            int idheadsDepartment = db.context.Appointments.FirstOrDefault(x => x.IdAppointment == idAppointment).IdheadsDepartment;
+            return db.context.Users.FirstOrDefault(x => x.idUser == idheadsDepartment).FIO;
+        }
+        public string GetGeo(int idAppointment)
+        {
+            int idPatient = db.context.Appointments.FirstOrDefault(x => x.IdAppointment == idAppointment).IdPatient;
+            return db.context.Users.FirstOrDefault(x => x.idUser == idPatient).Geolocation;
+        }
+        public string GetTel(int idAppointment)
+        {
+            int idPatient = db.context.Appointments.FirstOrDefault(x => x.IdAppointment == idAppointment).IdPatient;
+            return db.context.Users.FirstOrDefault(x => x.idUser == idPatient).Telephon;
+        }
+        public string GetProf(int idAppointment)
+        {
+            int idPatient = db.context.Appointments.FirstOrDefault(x => x.IdAppointment == idAppointment).IdPatient;
+            return db.context.Users.FirstOrDefault(x => x.idUser == idPatient).Profession;
+        }
         /// <summary>
         /// проверка соответсвия логина и пароля для входа
         /// </summary>
@@ -64,6 +99,7 @@ namespace wpf.Controllers
         /// <param name="statusUser"></param>
         public void SetLocalSettings(int idUser, string statusUser = "client")
         {
+            Console.WriteLine("AAAAAAA " + idUser);
             Settings.Default.IdUser = idUser;
             Settings.Default.StatusUser = statusUser;
             Settings.Default.Save();
@@ -114,11 +150,6 @@ namespace wpf.Controllers
                     throw new Exception($"Поле дата рождения не может быть пустым!");
                 if (dateOfBirthdayUser > DateTime.Today.AddYears(-18))
                     throw new Exception($"Вам должно быть минимум 18 лет!");
-                //Проверка дублирования логина
-                string loginValue = dataRegistration["логин"];
-                var logins = db.context.Users.Where(x => x.Login == loginValue).ToList();
-                if (logins.Count > 0)
-                    throw new Exception($"Такой логин уже используется!");
                 //Логин до 20 символов
                 if (dataRegistration["логин"].Length > 20)
                     throw new Exception($"Поле логин не может быть больше 20 символов!");
@@ -129,6 +160,11 @@ namespace wpf.Controllers
                 //Сложность пароля
                 if (needPassword)
                 {
+                    //Проверка дублирования логина
+                    string loginValue = dataRegistration["логин"];
+                    var logins = db.context.Users.Where(x => x.Login == loginValue).ToList();
+                    if (logins.Count > 0)
+                        throw new Exception($"Такой логин уже используется!");
                     string patternPass = @"^(?=.*[A-Za-z])(?=.*\d).{6,}$";
                     if (!Regex.IsMatch(dataRegistration["пароль"], patternPass))
                         throw new Exception($"Пароль слишком слабый! Он должен состоять минимум из 6 символов и содержать минимум 1 цифру и 1 латинскую букву.");
@@ -168,9 +204,10 @@ namespace wpf.Controllers
                     Status = dataRegistration["статус"]
                 };
                 db.context.Users.Add(user);
+                db.context.SaveChanges();
                 //тестить
                 if (!isAnotherUser)
-                    SetLocalSettings(Convert.ToInt32(dataRegistration["id"]), dataRegistration["статус"]);
+                    SetLocalSettings(user.idUser, dataRegistration["статус"]);
             } else
             {
                 // Находим пользователя по id
@@ -257,6 +294,10 @@ namespace wpf.Controllers
         public List<Users> GetAllUsersHeadsDepartment()
         {
             return db.context.Users.Where(x => x.Status == "HeadsDepartment").ToList();
+        }
+        public List<Users> GetAllSpecialistes()
+        {
+            return db.context.Users.Where(x => x.Status == "Specialistes").ToList();
         }
     }
 }

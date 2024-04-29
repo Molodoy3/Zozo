@@ -28,7 +28,7 @@ namespace wpf.Views.Pages
 
             int idUser = Properties.Settings.Default.IdUser;
             string statusUserThat = Properties.Settings.Default.StatusUser;
-            if (statusUserThat == "specialist" || statusUserThat == "manager" || statusUserThat == "admin")
+            if (statusUserThat == "specialist" || statusUserThat == "manager" || statusUserThat == "admin" || statusUserThat == "HeadsDepartment")
             {
                 StatusTextBox.Visibility = Visibility.Visible;
                 StatusComboBox.Visibility = Visibility.Visible;
@@ -100,7 +100,8 @@ namespace wpf.Views.Pages
             {
                 try
                 {
-                    usersController.RegistrationUser(dataRegistration, dateOfBirthdayUser);
+                    bool isAnotherUser = Properties.Settings.Default.IdUser is int && Properties.Settings.Default.IdUser > 0 ? true : false;
+                    usersController.RegistrationUser(dataRegistration, dateOfBirthdayUser, true, isAnotherUser);
                 }
                 catch (Exception ex)
                 {

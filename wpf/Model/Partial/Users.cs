@@ -22,5 +22,38 @@ namespace wpf.Model
                 return "Возвраст: " + (int)DateTime.Now.Subtract((DateTime)Date).Days / 365 + " лет";
             }
         }
+        public string NumberOfVisits
+        {
+            get
+            {
+                Core db = new Core();
+                return db.context.Appointments.Where(x => x.IdPatient == idUser).Count().ToString();
+            }
+        }
+        public string StatusUser
+        {
+            get
+            {
+                string status = "";
+                switch (Status)
+                {
+                    case "admin":
+                        status = "Администратор";
+                        break;
+                    case "HeadsDepartment":
+                        status = "Заведующий отделением";
+                        break;
+                    case "client":
+                        status = "Клиент";
+                        break;
+                    case "specialist":
+                        status = "Врач";
+                        break;
+                    default:
+                        break;
+                }
+                return status;
+            }
+        }
     }
 }

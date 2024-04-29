@@ -27,6 +27,7 @@ namespace wpf.Model
         public int IdPatient { get; set; }
         public int IdDoctor { get; set; }
         public string Diagnosis { get; set; }
+        public string PastAndConcurrentIllnesses { get; set; }
         public string DevelopmentRealDisease { get; set; }
         public string ObjectiveResearchData { get; set; }
         public string Bite { get; set; }
@@ -35,7 +36,7 @@ namespace wpf.Model
         public string Treatment { get; set; }
         public string TreatmentResults { get; set; }
         public string Instructions { get; set; }
-        public Nullable<int> IdheadsDepartment { get; set; }
+        public int IdheadsDepartment { get; set; }
     
         public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
