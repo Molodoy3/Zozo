@@ -15,6 +15,27 @@ namespace wpf.Controllers
     internal class UsersController
     {
         private Core db = new Core();
+        public Users GetUser(int idUser)
+        {
+            return db.context.Users.FirstOrDefault(x => x.idUser == idUser);
+        }
+        public List<Users> GetUsersForSearch(string textForSearch, string statusUser, string date = "")
+        {
+            if (date == "")
+            {
+                if (statusUser == "all")
+                    return db.context.Users.Where(x => x.Lastname.Contains(textForSearch)).ToList();
+                else
+                    return db.context.Users.Where(x => x.Lastname.Contains(textForSearch) && x.Status == statusUser).ToList();
+            } else
+            {
+                if (statusUser == "all")
+                    return db.context.Users.ToList().Where(x => x.Lastname.Contains(textForSearch) && x.LastDayAppointment == date).ToList();
+                else
+                    return db.context.Users.ToList().Where(x => x.Lastname.Contains(textForSearch) && x.Status == statusUser && x.LastDayAppointment == date).ToList();
+            }
+
+        }
         public string GetSexUser(int idAppointment)
         {
             int idPatient = db.context.Appointments.FirstOrDefault(x => x.IdAppointment == idAppointment).IdPatient;

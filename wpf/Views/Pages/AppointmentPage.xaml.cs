@@ -17,6 +17,7 @@ using Row = DocumentFormat.OpenXml.Spreadsheet.Row;
 using Microsoft.Office.Interop.Excel;
 using System.Net.Http;
 using System.Net;
+using System.Collections.Generic;
 //using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace wpf.Views.Pages
@@ -59,104 +60,32 @@ namespace wpf.Views.Pages
                 AppoitmentChangeButton.Visibility = Visibility.Visible;
             }
 
-            //берем все позиции зубов для этой записи
+            //Заполнение таблицы зубов
             var oralCavity = db.context.OralCavity?.Where(x => x.AppointmentsId == idAppointment);
-
-            //берем позиции зубов для номера позиции 1 (левые верхние зубы)
-            var oralCavityPos1 = oralCavity.Where(x => x.Position == 1);
-            for (int i = 1; i <= 8; i++)
+            TableCell targetCell;
+            var row1Numbers = new HashSet<int>();
+            var row3Numbers = new HashSet<int>();
+            foreach (var item in oralCavity)
             {
-                var f = oralCavityPos1?.FirstOrDefault(x => x.Number == i && x.Hygiene == 1);
-                TableCell targetCell = Hygiene.Cells[i];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos1?.FirstOrDefault(x => x.Number == i && x.DentalDystopia == 1);
-                targetCell = DentalDystopia.Cells[i];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos1?.FirstOrDefault(x => x.Number == i && x.GingivalRecession == 1);
-                targetCell = GingivalRecession.Cells[i];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos1?.FirstOrDefault(x => x.Number == i && x.GMA == 1);
-                targetCell = GMA.Cells[i];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-            }
-            //берем позиции зубов для номера позиции 2 (правые верхние зубы)
-            var oralCavityPos2 = oralCavity.Where(x => x.Position == 2);
-            for (int i = 1; i <= 8; i++)
-            {
-                var f = oralCavityPos2?.FirstOrDefault(x => x.Number == i && x.Hygiene == 1);
-                TableCell targetCell = Hygiene.Cells[i + 8];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos2?.FirstOrDefault(x => x.Number == i && x.DentalDystopia == 1);
-                targetCell = DentalDystopia.Cells[i + 8];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos2?.FirstOrDefault(x => x.Number == i && x.GingivalRecession == 1);
-                targetCell = GingivalRecession.Cells[i + 8];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos2?.FirstOrDefault(x => x.Number == i && x.GMA == 1);
-                targetCell = GMA.Cells[i + 8];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-            }
-            //берем позиции зубов для номера позиции 3 (левые нижние зубы)
-            var oralCavityPos3 = oralCavity.Where(x => x.Position == 3);
-            for (int i = 1; i <= 8; i++)
-            {
-                var f = oralCavityPos3?.FirstOrDefault(x => x.Number == i && x.Hygiene == 1);
-                TableCell targetCell = Hygiene2.Cells[i];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos3?.FirstOrDefault(x => x.Number == i && x.DentalDystopia == 1);
-                targetCell = DentalDystopia2.Cells[i];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos3?.FirstOrDefault(x => x.Number == i && x.GingivalRecession == 1);
-                targetCell = GingivalRecession2.Cells[i];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos3?.FirstOrDefault(x => x.Number == i && x.GMA == 1);
-                targetCell = GMA2.Cells[i];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-            }
-            //берем позиции зубов для номера позиции 2 (правые верхние зубы)
-            var oralCavityPos4 = oralCavity.Where(x => x.Position == 4);
-            for (int i = 1; i <= 8; i++)
-            {
-                var f = oralCavityPos4?.FirstOrDefault(x => x.Number == i && x.Hygiene == 1);
-                TableCell targetCell = Hygiene2.Cells[i + 8];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos4?.FirstOrDefault(x => x.Number == i && x.DentalDystopia == 1);
-                targetCell = DentalDystopia2.Cells[i + 8];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos4?.FirstOrDefault(x => x.Number == i && x.GingivalRecession == 1);
-                targetCell = GingivalRecession2.Cells[i + 8];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
-
-                f = oralCavityPos4?.FirstOrDefault(x => x.Number == i && x.GMA == 1);
-                targetCell = GMA2.Cells[i + 8];
-                if (f != null)
-                    targetCell.ContentStart.InsertTextInRun("+");
+                if (item.Number < 16)
+                {
+                    if (!row1Numbers.Contains(item.Number))
+                    {
+                        targetCell = row1.Cells[item.Number];
+                        row1Numbers.Add(item.Number);
+                    } else
+                        targetCell = row2.Cells[item.Number];
+                    targetCell.ContentStart.InsertTextInRun(item.Value);
+                } else
+                {
+                    if (!row3Numbers.Contains(item.Number))
+                    {
+                        targetCell = row3.Cells[item.Number - 16];
+                        row3Numbers.Add(item.Number);
+                    } else
+                        targetCell = row4.Cells[item.Number - 16];
+                    targetCell.ContentStart.InsertTextInRun(item.Value);
+                }
             }
 
 
@@ -224,7 +153,6 @@ namespace wpf.Views.Pages
                 Excel.Sheets objSheets = objWorkbook.Worksheets;
                 _Worksheet objSheet = (_Worksheet)objSheets.get_Item(1);
 
-                // Применение изменений к ячейке A1
                 Range cell = (Range)objSheet.Cells[1, 3];
                 if (cell != null)
                     cell.Value2 = "Код формы по ОКУД 0402008";
@@ -284,6 +212,35 @@ namespace wpf.Views.Pages
                 cell = (Range)objSheet2.Cells[19, 2];
                 if (cell != null)
                     cell.Value2 = appointment.DataXrayStudies;
+                //Карта зубов
+                var oralCavity = db.context.OralCavity?.Where(x => x.AppointmentsId == appointmentId);
+                var row1Numbers = new HashSet<int>();
+                var row3Numbers = new HashSet<int>();
+                foreach (var item in oralCavity)
+                {
+                    if (item.Number < 16)
+                    {
+                        if (!row1Numbers.Contains(item.Number))
+                        {
+                            cell = (Range)objSheet2.Cells[8, item.Number + 2];
+                            row1Numbers.Add(item.Number);
+                        }
+                        else
+                            cell = (Range)objSheet2.Cells[9, item.Number + 2];
+                        cell.Value2 = item.Value;
+                    }
+                    else
+                    {
+                        if (!row3Numbers.Contains(item.Number))
+                        {
+                            cell = (Range)objSheet2.Cells[11, item.Number - 16 + 2];
+                            row3Numbers.Add(item.Number);
+                        }
+                        else
+                            cell = (Range)objSheet2.Cells[12, item.Number - 16 + 2];
+                        cell.Value2 = item.Value;
+                    }
+                }
 
                 //Страница третья
                 _Worksheet objSheet3 = (_Worksheet)objSheets.get_Item(3);

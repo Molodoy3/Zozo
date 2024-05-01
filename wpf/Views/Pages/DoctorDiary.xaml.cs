@@ -62,5 +62,45 @@ namespace wpf.Views.Pages
             int idUser = activeUser.idUser;
             NavigationService.Navigate(new ClientPersonalCabinet(idUser));
         }
+
+        private void ButtonSearcheClick(object sender, RoutedEventArgs e)
+        {
+            string statusUser;
+            TextBlock selectedTextBlock = (TextBlock)StatusComboBox.SelectedItem;
+            switch (selectedTextBlock.Text)
+            {
+                case "Специалист":
+                    statusUser = "specialist";
+                    break;
+                case "Менеджер":
+                    statusUser = "manager";
+                    break;
+                case "Администратор":
+                    statusUser = "admin";
+                    break;
+                case "Заведующий отделением":
+                    statusUser = "HeadsDepartment";
+                    break;
+                case "Клиент":
+                    statusUser = "client";
+                    break;
+                default:
+                    statusUser = "all";
+                    break;
+            }
+
+            string date = CalendarForSearch.DisplayDate.ToString("dd.MM.yy");
+
+            string textForSearch = SearchUserTextBox.Text;
+            UsersController usersController = new UsersController();
+            List<Users> searchingUsers = usersController.GetUsersForSearch(textForSearch, statusUser, date);
+            ClientsListView.ItemsSource = searchingUsers;
+
+            if (searchingUsers.Count > 0)
+                StatictickFoundTextBlock.Text = "Найдено " + searchingUsers.Count;
+            else
+                StatictickFoundTextBlock.Text = "Ничего не найдено";
+        }
     }
 }
+

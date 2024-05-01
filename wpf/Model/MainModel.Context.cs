@@ -26,9 +26,9 @@ namespace wpf.Model
         }
     
         public virtual DbSet<Diseases> Diseases { get; set; }
-        public virtual DbSet<OralCavity> OralCavity { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Appointments> Appointments { get; set; }
+        public virtual DbSet<OralCavity> OralCavity { get; set; }
     }
 }

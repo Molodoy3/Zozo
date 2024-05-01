@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:wpf.Views.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="2300" d:DesignWidth="800"
+      d:DesignHeight="2300" d:DesignWidth="900"
       Title="Редактирование записи">
 
     <Grid>
@@ -48,510 +48,289 @@
                         <ComboBox Margin="0 0 0 10" x:Name="headsDepartmentComboBox"></ComboBox>
                     </StackPanel>
                     <TextBlock Style="{StaticResource Title}" Margin="0 30 0 0">Зубная формула</TextBlock>
-                    <FlowDocumentReader Width="600" Height="280">
-                        <FlowDocument>
-                            <Table  CellSpacing="5" BorderThickness="1" BorderBrush="Black">
-                                <Table.Columns>
-                                    <TableColumn Width="150"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                    <TableColumn Width="15"/>
-                                </Table.Columns>
-                                <TableRowGroup>
-                                    <TableRow Name="Hygiene">
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>Гигиена</Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Name="DentalDystopia">
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>дистопия зубов</Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Name="GingivalRecession">
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>рецесия десны</Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Name="GMA">
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>гма</Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>Номер зуба</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>8</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>7</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>6</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>5</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>4</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>3</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>2</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>1</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>1</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>2</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>3</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>4</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>5</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>6</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>7</Paragraph>
-                                        </TableCell>
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>8</Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Name="Hygiene2">
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>Гигиена</Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Name="DentalDystopia2">
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>дистопия зубов</Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Name="GingivalRecession2">
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>рецесия десны</Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Name="GMA2">
-                                        <TableCell Style="{StaticResource TitleTableCell}">
-                                            <Paragraph>гма</Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                        <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
-                                            <Paragraph TextAlignment="Center"></Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableRowGroup>
-                            </Table>
-                        </FlowDocument>
-                    </FlowDocumentReader>
+                    <StackPanel Orientation="Horizontal" Width="900">
+                        <TextBlock VerticalAlignment="Center" Width="250" TextWrapping="Wrap">"Осмотр полости рта. Состояние зубов 
+          Условные обозначения: 
+          отсутствует - 0, корень - R, Кариес - С, Пульпит - Р, периодонтит - Pt, пломбированный - П, 
+          Пародонтоз -А, подвижность -I, II III (степень), коронка- К, искусст. зуб- И"
+                        </TextBlock>
+                        <FlowDocumentReader Width="600" Height="280">
+                            <FlowDocument>
+                                <Table CellSpacing="5" BorderThickness="1" BorderBrush="Black">
+                                    <Table.Columns>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                        <TableColumn Width="30"/>
+                                    </Table.Columns>
+                                    <TableRowGroup>
+                                        <TableRow Name="row1">
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Name="row2">
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">8</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">7</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">6</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">5</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">4</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">3</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">2</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">1</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">1</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">2</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">3</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">4</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">5</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">6</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">7</Paragraph>
+                                            </TableCell>
+                                            <TableCell Style="{StaticResource TitleTableCell}">
+                                                <Paragraph TextAlignment="Center">8</Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Name="row3">
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow Name="row4">
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                            <TableCell MouseLeftButtonDown="MouseLeftButtonDownTableCell">
+                                                <Paragraph TextAlignment="Center"></Paragraph>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableRowGroup>
+                                </Table>
+                            </FlowDocument>
+                        </FlowDocumentReader>
+                    </StackPanel>
                     <TextBlock Style="{StaticResource Title}">Таблица связанных приемов</TextBlock>
                     <FlowDocumentReader Width="600" Height="280" Name="DaughterAppotintmentsFlowDocumentReader">
                         <FlowDocument>

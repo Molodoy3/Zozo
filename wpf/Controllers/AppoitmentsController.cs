@@ -99,6 +99,7 @@ namespace wpf.Controllers
             if (arrayIdDaughterAppointmentsForAdd.Count() != 0)
             {
                 bool hasDuplicates = arrayIdDaughterAppointmentsForAdd.Count != arrayIdDaughterAppointmentsForAdd.Distinct().Count();
+
                 if (hasDuplicates)
                     throw new Exception("Дочерние записи не могут повторяться");
             }
@@ -132,7 +133,7 @@ namespace wpf.Controllers
                     throw new Exception("Ни одно текстовое поле не может иметь длину текста более 100 символов");
             }
         }
-        public void AddAppointment(object[] dataAppointment, int[,] dataOralCavity)
+        public void AddAppointment(object[] dataAppointment, string[,] dataOralCavity)
         {
             Appointments appointment = new Appointments() {
                 Date = (DateTime)dataAppointment[0],
@@ -155,29 +156,29 @@ namespace wpf.Controllers
             db.context.Appointments.Add(appointment);
             int idAppointment = appointment.IdAppointment;
 
-            for (int i = 0; i < 32; i++)
+            for (int i = 0; i < 64; i++)
             {
-                if (dataOralCavity[i, 0] == 0)
+                if (dataOralCavity[i, 1] == null)
                     continue;
-
                 OralCavity oralCavity = new OralCavity()
                 {
                     AppointmentsId = idAppointment,
-                    Position = dataOralCavity[i, 0],
-                    Number = dataOralCavity[i, 1],
-                    Hygiene = dataOralCavity[i, 2],
-                    DentalDystopia = dataOralCavity[i, 3],
-                    GingivalRecession = dataOralCavity[i, 4],
-                    GMA = dataOralCavity[i, 5],
+                    Number = Convert.ToInt32(dataOralCavity[i, 0]),
+                    Value = dataOralCavity[i, 1],
                 };
                 db.context.OralCavity.Add(oralCavity);
             }
             db.context.SaveChanges();
         }
-        public void EditAppointment(object[] dataAppointment, int[,] dataOralCavity, List<int> arrayIdDaughterAppointmentsForDelete, List<int> arrayIdDaughterAppointmentsForAdd)
+        public void EditAppointment(object[] dataAppointment, string[,] dataOralCavity, List<int> arrayIdDaughterAppointmentsForDelete, List<int> arrayIdDaughterAppointmentsForAdd)
         {
             //сама запись
             Appointments appointment = db.context.Appointments.Find(dataAppointment[16]);
+            //Дополнительная проверка на кол-во дочерних приемов
+            int currentNumbDaughterAppoitments = db.context.Appointments.Where(x => x.IdParrentAppointments == appointment.IdAppointment).Count();
+            if ((currentNumbDaughterAppoitments + arrayIdDaughterAppointmentsForAdd.Count() - arrayIdDaughterAppointmentsForDelete.Count()) > 12)
+                throw new Exception("Количество дочерних приемов не может превышать 12");
+
             if (appointment != null)
             {
                 appointment.Date = (DateTime)dataAppointment[0];
@@ -205,20 +206,15 @@ namespace wpf.Controllers
             var oldOralCavityItems = db.context.OralCavity.Where(x => x.AppointmentsId == appointment.IdAppointment);
             db.context.OralCavity.RemoveRange(oldOralCavityItems);
             //добавление новых
-            for (int i = 0; i < 32; i++)
+            for (int i = 0; i < 64; i++)
             {
-                if (dataOralCavity[i, 0] == 0)
+                if (dataOralCavity[i, 1] == null)
                     continue;
-
                 OralCavity oralCavity = new OralCavity()
                 {
                     AppointmentsId = appointment.IdAppointment,
-                    Position = dataOralCavity[i, 0],
-                    Number = dataOralCavity[i, 1],
-                    Hygiene = dataOralCavity[i, 2],
-                    DentalDystopia = dataOralCavity[i, 3],
-                    GingivalRecession = dataOralCavity[i, 4],
-                    GMA = dataOralCavity[i, 5],
+                    Number = Convert.ToInt32(dataOralCavity[i, 0]),
+                    Value = dataOralCavity[i, 1],
                 };
                 db.context.OralCavity.Add(oralCavity);
             }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using wpf.Controllers;
 using wpf.Properties;
 using wpf.Views.Pages;
 using wpf.Views.Pages.Client;
@@ -26,20 +27,32 @@ namespace wpf
         public MainWindow()
         {
             InitializeComponent();
+
             if (!(Settings.Default.IdUser > 0))
                 MainFrame.NavigationService.Navigate(new AuthPage());
-            else 
+            else
+            {
                 MainFrame.NavigationService.Navigate(new MainPage());
+                UsersController usersController = new UsersController();
+                var user = usersController.GetUser(Settings.Default.IdUser);
+                DataContext = user;
+            }
         }
 
-        private void ClientPersonalCabinetLinkButtonClick(object sender, RoutedEventArgs e)
+        private void IconUserMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (Properties.Settings.Default.IdUser != 0)
-                MainFrame.NavigationService.Navigate(new ClientPersonalCabinet(Properties.Settings.Default.IdUser));
-            else 
+            if (Settings.Default.IdUser != 0)
+                MainFrame.NavigationService.Navigate(new ClientPersonalCabinet(Settings.Default.IdUser));
+            else
                 MessageBox.Show("Вы еще не авторизованы!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-
+        private void LogoClick(object sender, MouseButtonEventArgs e)
+        {
+            if (Settings.Default.IdUser != 0)
+                MainFrame.NavigationService.Navigate(new MainPage());
+            else
+                MessageBox.Show("Вы еще не авторизованы!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }

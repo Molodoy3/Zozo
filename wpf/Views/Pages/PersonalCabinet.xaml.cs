@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +35,7 @@ namespace wpf.Views.Pages.Client
         {
             InitializeComponent();
             idUser = userID;
+            
 
             AppoitmentsController appoitmentsController = new AppoitmentsController();
             arrayHistoryAppoitments = appoitmentsController.GetHistoryAppointments(idUser);
@@ -47,6 +50,7 @@ namespace wpf.Views.Pages.Client
             {
                 DoctorDiaryButton.Visibility = Visibility.Visible;
             }
+            
 
             //Properties.Settings.Default.IdUser = 10;
             //idUser = 10;
@@ -69,6 +73,7 @@ namespace wpf.Views.Pages.Client
             }
 
             Users user = db.context.Users.FirstOrDefault(x => x.idUser == idUser);
+            DataContext = user;
             if (user != null)
             {
                 Login.Text = user.Login;
@@ -138,8 +143,8 @@ namespace wpf.Views.Pages.Client
             MessageBoxResult messageBoxResult = MessageBox.Show("Вы уверены, что хотите выйти?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                Properties.Settings.Default.IdUser = 0;
-                Properties.Settings.Default.StatusUser = "";
+                Settings.Default.IdUser = 0;
+                Settings.Default.StatusUser = "";
                 Settings.Default.Save();
                 MessageBox.Show("Вы успешно вышли!\nПеренаправление на страницу авторизации.", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.NavigationService.Navigate(new AuthPage());
@@ -158,6 +163,28 @@ namespace wpf.Views.Pages.Client
         private void DoctorDiaryClick(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new DoctorDiary(idUser));
+        }
+
+        private void ChangeIconUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string fileName = idUser + ".jpg";
+
+                string appFolderPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                string projectFolderPath = Directory.GetParent(appFolderPath).Parent.FullName;
+                string targetPath = System.IO.Path.Combine(projectFolderPath, "Assets/img/userIcons/", fileName);
+
+                if (File.Exists(targetPath))
+                {
+                    File.Delete(targetPath); // Удаляем старый файл, если он уже существует
+                }
+
+                File.Copy(openFileDialog.FileName, targetPath);
+                MessageBox.Show("Изображение успешно загружено");
+            }
         }
     }
 }

@@ -14,6 +14,14 @@
                 <TextBlock x:Name="mainTitle" Style="{StaticResource Title}">Личный кабинет</TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel Margin="0 0 30 0">
+                        <Border Width="100" Background="Aqua" HorizontalAlignment="Left" Height="100" BorderBrush="{StaticResource greyBrush}" BorderThickness="1" Margin="0 0 20 0" CornerRadius="50">
+                            <Ellipse  Stretch="Uniform" Width="100" Height="100">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding PathIconUser}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Button Width="250" HorizontalAlignment="Left" Margin="0 10 0 15" Name="ChangeIconUserButton" Click="ChangeIconUserButtonClick">Изменить картинку</Button>
                         <TextBlock Style="{StaticResource TitleChild}">Личная информация</TextBlock>
                         <Border BorderBrush="#EDEDED" BorderThickness=" 0 0 0 1" MinWidth="300" Margin="0 10 0 0">
                             <DockPanel>

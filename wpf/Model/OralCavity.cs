@@ -16,12 +16,8 @@ namespace wpf.Model
     {
         public int IdOralCavity { get; set; }
         public int AppointmentsId { get; set; }
-        public int Position { get; set; }
         public int Number { get; set; }
-        public int Hygiene { get; set; }
-        public int DentalDystopia { get; set; }
-        public int GingivalRecession { get; set; }
-        public int GMA { get; set; }
+        public string Value { get; set; }
     
         public virtual Appointments Appointments { get; set; }
     }

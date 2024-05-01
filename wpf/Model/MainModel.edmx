@@ -41,12 +41,8 @@
           </Key>
           <Property Name="IdOralCavity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AppointmentsId" Type="int" Nullable="false" />
-          <Property Name="Position" Type="int" Nullable="false" />
           <Property Name="Number" Type="int" Nullable="false" />
-          <Property Name="Hygiene" Type="int" Nullable="false" />
-          <Property Name="DentalDystopia" Type="int" Nullable="false" />
-          <Property Name="GingivalRecession" Type="int" Nullable="false" />
-          <Property Name="GMA" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="3" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -147,20 +143,6 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_diseases_Users" FromRole="Diseases" ToRole="Users" />
         </EntityType>
-        <EntityType Name="OralCavity">
-          <Key>
-            <PropertyRef Name="IdOralCavity" />
-          </Key>
-          <Property Name="IdOralCavity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AppointmentsId" Type="Int32" Nullable="false" />
-          <Property Name="Position" Type="Int32" Nullable="false" />
-          <Property Name="Number" Type="Int32" Nullable="false" />
-          <Property Name="Hygiene" Type="Int32" Nullable="false" />
-          <Property Name="DentalDystopia" Type="Int32" Nullable="false" />
-          <Property Name="GingivalRecession" Type="Int32" Nullable="false" />
-          <Property Name="GMA" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Appointments" Relationship="zozoDBModel.FK_oralCavity_appointments" FromRole="OralCavity" ToRole="Appointments" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -206,7 +188,6 @@
         </Association>
         <EntityContainer Name="zozoDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Diseases" EntityType="Self.Diseases" />
-          <EntitySet Name="OralCavity" EntityType="Self.OralCavity" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_diseases_Users" Association="Self.FK_diseases_Users">
@@ -218,6 +199,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Appointments" EntitySet="Appointments" />
           </AssociationSet>
+          <EntitySet Name="OralCavity" EntityType="zozoDBModel.OralCavity" />
           <AssociationSet Name="FK_oralCavity_appointments" Association="zozoDBModel.FK_oralCavity_appointments">
             <End Role="Appointments" EntitySet="Appointments" />
             <End Role="OralCavity" EntitySet="OralCavity" />
@@ -259,6 +241,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="OralCavity">
+          <Key>
+            <PropertyRef Name="IdOralCavity" />
+          </Key>
+          <Property Name="IdOralCavity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentsId" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Appointments" Relationship="zozoDBModel.FK_oralCavity_appointments" FromRole="OralCavity" ToRole="Appointments" />
+        </EntityType>
         <Association Name="FK_oralCavity_appointments">
           <End Type="zozoDBModel.Appointments" Role="Appointments" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -285,20 +277,6 @@
                 <ScalarProperty Name="IdDisease" ColumnName="IdDisease" />
                 <ScalarProperty Name="DescriptionDisease" ColumnName="DescriptionDisease" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OralCavity">
-            <EntityTypeMapping TypeName="zozoDBModel.OralCavity">
-              <MappingFragment StoreEntitySet="OralCavity">
-                <ScalarProperty Name="IdOralCavity" ColumnName="IdOralCavity" />
-                <ScalarProperty Name="AppointmentsId" ColumnName="AppointmentsId" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="Number" ColumnName="Number" />
-                <ScalarProperty Name="Hygiene" ColumnName="Hygiene" />
-                <ScalarProperty Name="DentalDystopia" ColumnName="DentalDystopia" />
-                <ScalarProperty Name="GingivalRecession" ColumnName="GingivalRecession" />
-                <ScalarProperty Name="GMA" ColumnName="GMA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -351,6 +329,16 @@
                 <ScalarProperty Name="IdParrentAppointments" ColumnName="IdParrentAppointments" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="IdAppointment" ColumnName="IdAppointment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OralCavity">
+            <EntityTypeMapping TypeName="zozoDBModel.OralCavity">
+              <MappingFragment StoreEntitySet="OralCavity">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="AppointmentsId" ColumnName="AppointmentsId" />
+                <ScalarProperty Name="IdOralCavity" ColumnName="IdOralCavity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

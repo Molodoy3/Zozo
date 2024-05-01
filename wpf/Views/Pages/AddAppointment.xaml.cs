@@ -69,246 +69,49 @@ namespace wpf.Views.Pages
             dataAppointment[14] = TreatmentResultsTextBox.Text;
             dataAppointment[15] = InstructionsTextBox.Text;
 
-            int[,] dataOralCavity = new int[32, 6];
+            string[,] dataOralCavity = new string[64, 2];
             //берем все верхние зубы
-            for (int i = 1; i <= 16; i++)
+            for (int i = 0; i <= 15; i++)
             {
-                int pos = 1;
-                int num = 0;
-
-                TableCell targetCell = Hygiene.Cells[i];
+                TableCell targetCell = row1.Cells[i];
                 Paragraph paragraph = targetCell.Blocks.FirstOrDefault() as Paragraph;
 
-                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run && run.Text == "+")
+                if (paragraph != null && (paragraph.Inlines.FirstOrDefault() is Run run && run.Text != "0" && paragraph.Inlines.FirstOrDefault() is Run run2 && run2.Text != ""))
                 {
-                    if (i > 8)
-                    {
-                        pos = 2;
-                        num = i - 8;
-                    } else
-                    {
-                        num = i;
-                        pos = 1;
-                    }
-                    dataOralCavity[i - 1, 0] = pos;
-                    dataOralCavity[i - 1, 1] = num;
-                    dataOralCavity[i - 1, 2] = 1;
-                    dataOralCavity[i - 1, 3] = 0;
-                    dataOralCavity[i - 1, 4] = 0;
-                    dataOralCavity[i - 1, 5] = 0;
+                    dataOralCavity[i, 0] = i.ToString();
+                    Run runValue = paragraph.Inlines.FirstOrDefault() as Run;
+                    dataOralCavity[i, 1] = runValue.Text;
                 }
 
-                targetCell = DentalDystopia.Cells[i];
+                targetCell = row2.Cells[i];
                 paragraph = targetCell.Blocks.FirstOrDefault() as Paragraph;
-                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run2 && run2.Text == "+")
+                if (paragraph != null && (paragraph.Inlines.FirstOrDefault() is Run run6 && run6.Text != "0" && paragraph.Inlines.FirstOrDefault() is Run run7 && run7.Text != ""))
                 {
-                    if (i > 8)
-                    {
-                        pos = 2;
-                        num = i - 8;
-                    }
-                    else
-                    {
-                        pos = 1;
-                        num = i;
-                    }
-
-                    if (dataOralCavity[i - 1, 0] > 0)
-                    {
-                        dataOralCavity[i - 1, 3] = 1;
-                    }
-                    else
-                    {
-                        dataOralCavity[i - 1, 0] = pos;
-                        dataOralCavity[i - 1, 1] = num;
-                        dataOralCavity[i - 1, 2] = 0;
-                        dataOralCavity[i - 1, 3] = 1;
-                        dataOralCavity[i - 1, 4] = 0;
-                        dataOralCavity[i - 1, 5] = 0;
-                    }
-                }
-
-                targetCell = GingivalRecession.Cells[i];
-                paragraph = targetCell.Blocks.FirstOrDefault() as Paragraph;
-
-                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run3 && run3.Text == "+")
-                {
-                    if (i > 8)
-                    {
-                        pos = 2;
-                        num = i - 8;
-                    }
-                    else
-                    {
-                        pos = 1;
-                        num = i;
-                    }
-
-                    if (dataOralCavity[i - 1, 0] > 0)
-                    {
-                        dataOralCavity[i - 1, 4] = 1;
-                    }
-                    else
-                    {
-                        dataOralCavity[i - 1, 0] = pos;
-                        dataOralCavity[i - 1, 1] = num;
-                        dataOralCavity[i - 1, 2] = 0;
-                        dataOralCavity[i - 1, 3] = 0;
-                        dataOralCavity[i - 1, 4] = 1;
-                        dataOralCavity[i - 1, 5] = 0;
-                    }
-                }
-
-                targetCell = GMA.Cells[i];
-                paragraph = targetCell.Blocks.FirstOrDefault() as Paragraph;
-
-                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run4 && run4.Text == "+")
-                {
-                    if (i > 8)
-                    {
-                        pos = 2;
-                        num = i - 8;
-                    }
-                    else
-                    {
-                        pos = 1;
-                        num = i;
-                    }
-
-                    if (dataOralCavity[i - 1, 0] > 0)
-                    {
-                        dataOralCavity[i - 1, 5] = 1;
-                    }
-                    else
-                    {
-                        dataOralCavity[i - 1, 0] = pos;
-                        dataOralCavity[i - 1, 1] = num;
-                        dataOralCavity[i - 1, 2] = 0;
-                        dataOralCavity[i - 1, 3] = 0;
-                        dataOralCavity[i - 1, 4] = 0;
-                        dataOralCavity[i - 1, 5] = 1;
-                    }
+                    dataOralCavity[i + 15, 0] = i.ToString();
+                    Run runValue = paragraph.Inlines.FirstOrDefault() as Run;
+                    dataOralCavity[i + 15, 1] = runValue.Text;
                 }
             }
             //берем все нижние зубы
-            for (int i = 1; i <= 16; i++)
+            for (int i = 16; i <= 31; i++)
             {
-                int pos = 3;
-                int num = 0;
-
-                TableCell targetCell = Hygiene2.Cells[i];
+                TableCell targetCell = row3.Cells[i - 16];
                 Paragraph paragraph = targetCell.Blocks.FirstOrDefault() as Paragraph;
 
-                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run && run.Text == "+")
+                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run && run.Text != "0" && paragraph.Inlines.FirstOrDefault() is Run run2 && run2.Text != "")
                 {
-                    if (i > 8)
-                    {
-                        pos = 4;
-                        num = i - 8;
-                    }
-                    else
-                    {
-                        pos = 3;
-                        num = i;
-                    }
-                    dataOralCavity[i - 1, 0] = pos;
-                    dataOralCavity[i - 1, 1] = num;
-                    dataOralCavity[i - 1, 2] = 1;
-                    dataOralCavity[i - 1, 3] = 0;
-                    dataOralCavity[i - 1, 4] = 0;
-                    dataOralCavity[i - 1, 5] = 0;
+                    dataOralCavity[i, 0] = i.ToString();
+                    Run runValue = paragraph.Inlines.FirstOrDefault() as Run;
+                    dataOralCavity[i, 1] = runValue.Text;
                 }
 
-                targetCell = DentalDystopia2.Cells[i];
+                targetCell = row4.Cells[i - 16];
                 paragraph = targetCell.Blocks.FirstOrDefault() as Paragraph;
-                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run2 && run2.Text == "+")
+                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run6 && run6.Text != "0" && paragraph.Inlines.FirstOrDefault() is Run run7 && run7.Text != "")
                 {
-                    if (i > 8)
-                    {
-                        pos = 4;
-                        num = i - 8;
-                    }
-                    else
-                    {
-                        pos = 3;
-                        num = i;
-                    }
-
-                    if (dataOralCavity[i - 1, 0] > 0)
-                    {
-                        dataOralCavity[i - 1, 3] = 1;
-                    }
-                    else
-                    {
-                        dataOralCavity[i - 1, 0] = pos;
-                        dataOralCavity[i - 1, 1] = num;
-                        dataOralCavity[i - 1, 2] = 0;
-                        dataOralCavity[i - 1, 3] = 1;
-                        dataOralCavity[i - 1, 4] = 0;
-                        dataOralCavity[i - 1, 5] = 0;
-                    }
-                }
-
-                targetCell = GingivalRecession2.Cells[i];
-                paragraph = targetCell.Blocks.FirstOrDefault() as Paragraph;
-
-                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run3 && run3.Text == "+")
-                {
-                    if (i > 8)
-                    {
-                        pos = 4;
-                        num = i - 8;
-                    }
-                    else
-                    {
-                        pos = 3;
-                        num = i;
-                    }
-
-                    if (dataOralCavity[i - 1, 0] > 0)
-                    {
-                        dataOralCavity[i - 1, 4] = 1;
-                    }
-                    else
-                    {
-                        dataOralCavity[i - 1, 0] = pos;
-                        dataOralCavity[i - 1, 1] = num;
-                        dataOralCavity[i - 1, 2] = 0;
-                        dataOralCavity[i - 1, 3] = 0;
-                        dataOralCavity[i - 1, 4] = 1;
-                        dataOralCavity[i - 1, 5] = 0;
-                    }
-                }
-
-                targetCell = GMA2.Cells[i];
-                paragraph = targetCell.Blocks.FirstOrDefault() as Paragraph;
-
-                if (paragraph != null && paragraph.Inlines.FirstOrDefault() is Run run4 && run4.Text == "+")
-                {
-                    if (i > 8)
-                    {
-                        pos = 4;
-                        num = i - 8;
-                    }
-                    else
-                    {
-                        pos = 3;
-                        num = i;
-                    }
-
-                    if (dataOralCavity[i - 1, 0] > 0)
-                    {
-                        dataOralCavity[i - 1, 5] = 1;
-                    }
-                    else
-                    {
-                        dataOralCavity[i - 1, 0] = pos;
-                        dataOralCavity[i - 1, 1] = num;
-                        dataOralCavity[i - 1, 2] = 0;
-                        dataOralCavity[i - 1, 3] = 0;
-                        dataOralCavity[i - 1, 4] = 0;
-                        dataOralCavity[i - 1, 5] = 1;
-                    }
+                    dataOralCavity[i + 15, 0] = i.ToString();
+                    Run runValue = paragraph.Inlines.FirstOrDefault() as Run;
+                    dataOralCavity[i + 15, 1] = runValue.Text;
                 }
             }
 
@@ -332,18 +135,33 @@ namespace wpf.Views.Pages
             Paragraph paragraph = tableCell.Blocks.First() as Paragraph;
             if (paragraph.Inlines.Count > 0)
             {
-                if (((Run)paragraph.Inlines.First()).Text == "+")
-                {
-                    ((Run)paragraph.Inlines.First()).Text = "";
-                }
+                string currentText = ((Run)paragraph.Inlines.First()).Text;
+                if (currentText == "R")
+                    ((Run)paragraph.Inlines.First()).Text = "C";
+                else if (currentText == "C")
+                    ((Run)paragraph.Inlines.First()).Text = "P";
+                else if (currentText == "P")
+                    ((Run)paragraph.Inlines.First()).Text = "Pt";
+                else if (currentText == "Pt")
+                    ((Run)paragraph.Inlines.First()).Text = "П";
+                else if (currentText == "П")
+                    ((Run)paragraph.Inlines.First()).Text = "A";
+                else if (currentText == "A")
+                    ((Run)paragraph.Inlines.First()).Text = "I";
+                else if (currentText == "I")
+                    ((Run)paragraph.Inlines.First()).Text = "II";
+                else if (currentText == "II")
+                    ((Run)paragraph.Inlines.First()).Text = "III";
+                else if (currentText == "III")
+                    ((Run)paragraph.Inlines.First()).Text = "К";
+                else if (currentText == "К")
+                    ((Run)paragraph.Inlines.First()).Text = "И";
+                else if (currentText == "И")
+                    ((Run)paragraph.Inlines.First()).Text = "0";
                 else
-                {
-                    ((Run)paragraph.Inlines.First()).Text = "+";
-                }
+                    ((Run)paragraph.Inlines.First()).Text = "R";
             } else
-            {
-                paragraph.Inlines.Add("+");
-            }
+                paragraph.Inlines.Add("R");
 
         }
     }
