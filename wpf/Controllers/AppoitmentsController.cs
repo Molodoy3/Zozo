@@ -94,6 +94,23 @@ namespace wpf.Controllers
                 }
             }
         }
+        public void ValidateAppointmentDataClient(object[] dataAppointment)
+        {
+            //проверка даты
+            if (dataAppointment[0] != null)
+            {
+                if ((DateTime)dataAppointment[0] < DateTime.Now)
+                    throw new Exception("Дата должна быть позже текущей");
+            }
+            else
+                throw new Exception("Дата не выбрана");
+
+            if (dataAppointment[1].ToString().Length > 100 || dataAppointment[1].ToString().Length < 10)
+                throw new Exception("Жалоба от 10 до символов");
+
+            if (dataAppointment[2] == null)
+                throw new Exception("Заведующий отделением не выбран");
+        }
         public void ValidateAppointmentData(object[] dataAppointment, List<int> arrayIdDaughterAppointmentsForAdd, bool futureDateRequirement = true)
         {
             if (arrayIdDaughterAppointmentsForAdd.Count() != 0)
@@ -132,6 +149,19 @@ namespace wpf.Controllers
                 if (item.Length > 100)
                     throw new Exception("Ни одно текстовое поле не может иметь длину текста более 100 символов");
             }
+        }
+        public void AddAppointmentClient(object[] dataAppointment)
+        {
+            Appointments appointment = new Appointments()
+            {
+                Date = (DateTime)dataAppointment[0],
+                ReferralText = dataAppointment[1] as string,
+                IdPatient = (int)dataAppointment[4],
+                IdDoctor = (int)dataAppointment[3],
+                IdheadsDepartment = (int)dataAppointment[2]
+            };
+            db.context.Appointments.Add(appointment);
+            db.context.SaveChanges();
         }
         public void AddAppointment(object[] dataAppointment, string[,] dataOralCavity)
         {

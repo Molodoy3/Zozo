@@ -107,6 +107,9 @@
     <Compile Include="Views\Pages\AddAppointment.xaml.cs">
       <DependentUpon>AddAppointment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\AddAppointmentClient.xaml.cs">
+      <DependentUpon>AddAppointmentClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\AppointmentPage.xaml.cs">
       <DependentUpon>AppointmentPage.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Pages\AddAppointment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\AddAppointmentClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

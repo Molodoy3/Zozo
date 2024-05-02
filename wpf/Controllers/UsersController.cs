@@ -290,7 +290,7 @@ namespace wpf.Controllers
         }
         public bool UserIsDoctor(int idUser)
         {
-            return db.context.Users.FirstOrDefault(x =>x.idUser == idUser).Status == "specialist" ? true : false;
+            return db.context.Users.FirstOrDefault(x =>x.idUser == idUser).Status == "specialist";
         }
         public List<Users> getClintsContactDoctor(int idDoctor)
         {

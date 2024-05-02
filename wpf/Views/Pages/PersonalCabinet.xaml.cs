@@ -35,7 +35,6 @@ namespace wpf.Views.Pages.Client
         {
             InitializeComponent();
             idUser = userID;
-            
 
             AppoitmentsController appoitmentsController = new AppoitmentsController();
             arrayHistoryAppoitments = appoitmentsController.GetHistoryAppointments(idUser);
@@ -58,8 +57,11 @@ namespace wpf.Views.Pages.Client
             mainTitle.Text += " " + db.context.Users.FirstOrDefault(x => x.idUser == idUser).Login;
             if (idUser == Properties.Settings.Default.IdUser)
             {
+                ChangeIconUserButton.Visibility = Visibility.Visible;
                 ExitButton.Visibility = Visibility.Visible;
-            }
+            } else if (usersController.UserIsDoctor(idUser))
+                NewAppointmentButton.Visibility = Visibility.Visible;
+
             if (statusUsingUser != "admin")
             {
                 deleteUserButton.Visibility = Visibility.Collapsed;
@@ -185,6 +187,11 @@ namespace wpf.Views.Pages.Client
                 File.Copy(openFileDialog.FileName, targetPath);
                 MessageBox.Show("Изображение успешно загружено");
             }
+        }
+
+        private void NewAppointmentButtonClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddAppointmentClient(idUser));
         }
     }
 }

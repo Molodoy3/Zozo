@@ -427,7 +427,7 @@
                     </FlowDocument>
                 </FlowDocumentReader>
                 <Button Click="AppoitmentChangeButtonClick" Name="AppoitmentChangeButton" Visibility="Collapsed" HorizontalAlignment="Center" Width="300">Редактировать</Button>
-                <Button Click="AppoitmentExtractButtonClick" Name="AppoitmentExtractButton" HorizontalAlignment="Center" Width="300">Скачать выписку (exel)</Button>
+                <Button Click="AppoitmentExtractButtonClick" Name="AppoitmentExtractButton" HorizontalAlignment="Center" Visibility="Collapsed" Width="300">Скачать выписку (exel)</Button>
                 <Button Click="AppoitmentCancelButtonClick" Name="AppoitmentCancelButton" Visibility="Collapsed" Style="{StaticResource ButtonBlue}" HorizontalAlignment="Center" Width="300">Отменить запись</Button>
             </StackPanel>
         </ScrollViewer>

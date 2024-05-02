@@ -40,6 +40,9 @@ namespace wpf.Views.Pages
             Appointments appointment = appoitmentsController.GetAppointment(appointmentId);
             DataContext = appointment;
 
+            if (DateTime.Now > appointment.Date)
+                AppoitmentExtractButton.Visibility = Visibility.Visible;
+
             //если запись только запланированная, то есть возможность ее отмены
             if (appointment.Date >=  DateTime.Now)
             {
